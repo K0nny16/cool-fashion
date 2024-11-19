@@ -22,33 +22,33 @@ export function Navbar(){
           <ul className="navbar-menu">
             {menuItems.map((item) => (
               <li
-                key={item.name}
+                key={item.name} //Hämtare ut namen på alla items.
                 className="navbar-item"
                 onMouseEnter={() => setOpenDropdown(item.name)} 
                 onMouseLeave={() => setOpenDropdown(null)}
               >
                 <span>{item.name}</span>
-                {openDropdown === item.name && item.dropdown && (
+                {openDropdown === item.name && item.dropdown && ( //Aktiverar dropdown ifall det är aktivt (alltså man håller över något av meny alternativen.)
                   <ul className="dropdown">
-                    {item.dropdown.map((subItem, index) =>
-                      typeof subItem === "string" ? (
+                    {item.dropdown.map((subItem, index) => //Loopar igen alla objekten.
+                      typeof subItem === "string" ? ( //Om det är en sträng rendera direkt
                         <li
-                          key={index}
-                          className="dropdown-item"
-                          onClick={() => handleItemClick(subItem)}
+                          key={index}   //Nyckel för varje underkatigori
+                          className="dropdown-item" 
+                          onClick={() => handleItemClick(subItem)} //Används bara ifall användaren klickar på nyheter eftersom den inte har en parent.
                         >
                           {subItem}
                         </li>
                       ) : (
-                        <li key={subItem.name} className="dropdown-item">
+                        <li key={subItem.name} className="dropdown-item"> 
                           <span>{subItem.name}</span>
                           <ul className="nested-dropdown">
-                            {subItem.content.map((contentItem, subIndex) => (
+                            {subItem.content.map((contentItem, subIndex) => ( //Samma som oven bara ifall det finns nestade items som det gör i dam och her.
                               <li
                                 key={subIndex}
                                 className="nested-dropdown-item"
                                 onClick={(e) => {
-                                  e.stopPropagation();
+                                  e.stopPropagation(); //Förhindrar att klicket påverkar parenten eller andra element ovan.
                                   handleItemClick(subItem.name,contentItem);
                                 }}
                               >
