@@ -1,0 +1,75 @@
+import React,{useState} from "react"
+import "../css/nav.css"
+
+export function Navbar(){
+    const [openDropdown, setOpenDropdown] = useState(null);
+    //Placeholder funktion för logiken med vad man klickar på.
+    function handleItemClick(parentCategory,itemName){
+        console.log(`Clicked on ${itemName} under ${parentCategory}`)
+        alert(`Clicked on ${itemName} under ${parentCategory}`)
+    }
+    //Struktur för hur menyn kommer att vara utformad.
+    const menuItems = [
+        {name:"Shop",dropdown:["Nyheter",
+            {name:"Dam",content:["Skor","Kläder","Accessoarer"]},
+            {name:"Man",content:["Skor","Kläder","Accessoarer"]},
+        ]},
+        {name:"About us",dropdown:["Contact us","Where to find us"]},
+        {name:"Cart",dropdown:["Checkout","Returns"]}
+    ]
+    return (
+        <nav className="navbar">
+          <ul className="navbar-menu">
+            {menuItems.map((item) => (
+              <li
+                key={item.name}
+                className="navbar-item"
+                onMouseEnter={() => setOpenDropdown(item.name)} 
+                onMouseLeave={() => setOpenDropdown(null)}
+              >
+                <span>{item.name}</span>
+                {openDropdown === item.name && item.dropdown && (
+                  <ul className="dropdown">
+                    {item.dropdown.map((subItem, index) =>
+                      typeof subItem === "string" ? (
+                        <li
+                          key={index}
+                          className="dropdown-item"
+                          onClick={() => handleItemClick(subItem)}
+                        >
+                          {subItem}
+                        </li>
+                      ) : (
+                        <li key={subItem.name} className="dropdown-item">
+                          <span>{subItem.name}</span>
+                          <ul className="nested-dropdown">
+                            {subItem.content.map((contentItem, subIndex) => (
+                              <li
+                                key={subIndex}
+                                className="nested-dropdown-item"
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  handleItemClick(subItem.name,contentItem);
+                                }}
+                              >
+                                {contentItem}
+                              </li>
+                            ))}
+                          </ul>
+                        </li>
+                      )
+                    )}
+                  </ul>
+                )}
+              </li>
+            ))}
+            <li className="navbar-item">
+              <span>Login</span>
+            </li>
+            <li className="navbar-item search-bar">
+              <input type="text" placeholder="Search..." />
+            </li>
+          </ul>
+        </nav>
+      );
+    }
