@@ -35,7 +35,7 @@ export function Navbar(){
                         <li
                           key={index}   //Nyckel för varje underkatigori
                           className="dropdown-item" 
-                          onClick={() => handleItemClick(subItem)} //Används bara ifall användaren klickar på nyheter eftersom den inte har en parent.
+                          onClick={() => handleItemClick(subItem.name,subItem)} //Används bara ifall användaren klickar på nyheter eftersom den inte har en parent.
                         >
                           {subItem}
                         </li>
