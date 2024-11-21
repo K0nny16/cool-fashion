@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Happy+Monkey&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+root,
+root.MOODSBORD1 {
+
+    --color1: #FF69B4;
+    --color2: #008080;
+    --color3: #556B2F;
+    --color4: #D2B48C;
+    --color5: #B57EDC;
+    --color6: #000000;
+    --color7: #000000;
+    --family-font: "Josefin Sans", sans-serif;
+}
+
+root.MOODSBORD2 {
+
+    --color1: #8B4513;
+    --color2: #013220;
+    --color3: #FFDB58;
+    --color4: #CB4154;
+    --color5: #191970;
+    --color6: #CC5500;
+    --color7: #F5F5DC;
+    --family-font: "Montserrat", sans-serif;
+}
+
+root.MOODSBORD3 {
+
+    --color1: #FFB6C1;
+    --color2: #87CEEB;
+    --color3: #32CD32;
+    --color4: #FFD700;
+    --color5: #DDA0DD;
+    --color6: #E6E8FA;
+    --color7: #FFA500;
+    --family-font: "Happy", sans-serif;
+}
+
+* {
+    border-radius: 20px;
+}
+
