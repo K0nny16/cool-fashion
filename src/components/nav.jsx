@@ -41,7 +41,10 @@ export function Navbar(){
                         </li>
                       ) : (
                         <li key={subItem.name} className="dropdown-item"> 
-                          <span>{subItem.name}</span>
+                          <span onClick={() => handleItemClick(item.name,subItem.name)}
+                            style={{cursor: "pointer"}}>
+                              {subItem.name}
+                          </span>
                           <ul className="nested-dropdown">
                             {subItem.content.map((contentItem, subIndex) => ( //Samma som oven bara ifall det finns nestade items som det gör i dam och her.
                               <li
