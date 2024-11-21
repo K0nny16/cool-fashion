@@ -35,13 +35,16 @@ export function Navbar(){
                         <li
                           key={index}   //Nyckel för varje underkatigori
                           className="dropdown-item" 
-                          onClick={() => handleItemClick(subItem)} //Används bara ifall användaren klickar på nyheter eftersom den inte har en parent.
+                          onClick={() => handleItemClick(subItem.name,subItem)} //Används bara ifall användaren klickar på nyheter eftersom den inte har en parent.
                         >
                           {subItem}
                         </li>
                       ) : (
                         <li key={subItem.name} className="dropdown-item"> 
-                          <span>{subItem.name}</span>
+                          <span onClick={() => handleItemClick(item.name,subItem.name)}
+                            style={{cursor: "pointer"}}>
+                              {subItem.name}
+                          </span>
                           <ul className="nested-dropdown">
                             {subItem.content.map((contentItem, subIndex) => ( //Samma som oven bara ifall det finns nestade items som det gör i dam och her.
                               <li
