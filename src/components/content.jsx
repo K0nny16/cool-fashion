@@ -1,5 +1,11 @@
 import "../css/content.css";
 
+const image1 = "assets/Product1.webp"
+const image2 = "assets/Product2.jpeg";
+const image3 = "assets/Product3.png";
+const image4 = "assets/Product4.png";
+const landingImage = "assets/cool-fashion-LandingImage.png"
+
 // Komponent för content kortet
 export function ContentCard({
   image,
@@ -24,28 +30,28 @@ export function Content() {
   const cards = [
     {
       id: 1,
-      image: "https://via.placeholder.com/150",
+      image: image1,
       title: "Product 1",
       price: 100,
       buttonText: "Buy",
     },
     {
       id: 1,
-      image: "https://via.placeholder.com/150",
+      image: image2,
       title: "Product 2",
       price: 100,
       buttonText: "Buy",
     },
     {
       id: 1,
-      image: "https://via.placeholder.com/150",
+      image: image3,
       title: "Product 3",
       price: 100,
       buttonText: "Buy",
     },
     {
       id: 1,
-      image: "https://via.placeholder.com/150",
+      image: image4,
       title: "Product 4",
       price: 100,
       buttonText: "Buy",
@@ -55,7 +61,7 @@ export function Content() {
   return (
     <div className="content">
       <div className="content-landing-img">
-        <img src="https://via.placeholder.com/800x300" alt="LandingImg" />
+        <img src={landingImage} alt="Landing"/>
       </div>
 
       <div className="content-cards">
