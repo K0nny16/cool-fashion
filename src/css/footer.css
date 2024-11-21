@@ -1,16 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Bokor&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Oswald:wght@200&family=Roboto:wght@100&display=swap");
+
 .footer {
   position: static;
   bottom: 0;
+  margin: -0.6%;
   height: auto;
-  width: 99%;
-  background-color: #f8f8f8;
-  border-top: 1px solid #ddd;
+  width: auto;
+  background-color: #000000;
+  border-top: 1px solid #ff4500;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   padding: 10px 10px;
   z-index: 2;
+  font-family: "Josefin Sans", sans-serif;
+  font-optical-sizing: auto;
 }
 
 .contacts {
@@ -21,10 +26,11 @@
 
 .contacts p {
   margin: 0;
+  color: #d2b48c;
 }
 
 .contacts a {
-  color: #000000;
+  color: #d2b48c;
   text-decoration: none;
 }
 
@@ -32,41 +38,61 @@
   text-decoration: underline;
 }
 
-.copyright {
+.copywright {
   font-size: 14px;
-  color: #000000;
+  color: #d2b48c;
   margin-left: auto;
+  margin-right: auto;
+}
+
+.signup h3 {
+  color: #d2b48c;
+  align-items: center;
+  padding-left: 50px;
 }
 
 .signup form {
   display: flex;
   flex-direction: row;
   gap: 10px;
+  margin-left: 50px;
 }
 
 .signup input {
   padding: 10px;
   border: 1px solid #000000;
   border-radius: 4px;
+  margin: auto;
 }
 
 .signup button {
   padding: 10px 20px;
-  background-color: #9dccff;
+  background-color: #d2b48c;
   color: rgb(0, 0, 0);
   border: none;
   cursor: pointer;
 }
 
 .signup button:hover {
-  background-color: #6cf681;
+  background-color: #556b2f;
+}
+
+.location {
+  padding-left: 3%;
 }
 
 .location iframe {
   max-width: 100px;
   height: 100px;
-  border-radius: 8px;
-  margin-top: 10px;
+  margin: auto;
+  border-radius: 10px;
+  border-width: 10px;
+  border-color: #d2b48c;
+  background-color: #d2b48c;
+}
+
+.location h3 {
+  color: #d2b48c;
 }
 
 @media (max-width: 768px) {

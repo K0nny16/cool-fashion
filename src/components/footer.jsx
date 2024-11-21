@@ -1,22 +1,26 @@
 import "../css/footer.css";
 
-export default function Footer() {
+export function Footer() {
   return (
     <>
       <footer className="footer">
+        <div className="copywright">
+          <p>&copy; 2024 CoolFashion. All rights reserved.</p>
+        </div>
         <div className="contacts">
           <p>
-            Phone: <a href="tel:+46 123 456 78">+46 123 456 78</a>
+            Phone:{" "}
+            <a href="tel:+46 123 456 78">
+              <br></br>+46 123 456 78
+            </a>
           </p>
           <p>
             Email to:
             <a href="email:coolfashion@gritacademy.se">
+              <br></br>
               coolfashion@gritacademy.se
             </a>
           </p>
-        </div>
-        <div className="copywright">
-          <p>&copy; 2024 CoolFashion. All rights reserved.</p>
         </div>
         <div className="location">
           <h3>Our Location</h3>
