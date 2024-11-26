@@ -9,7 +9,7 @@ const image4 = "assets/sommarskodam.jpg";
 
 
 export function ShoesFemale() {
-    const accessories = [
+    const shoes = [
         {
             id: 1,
             image: image1,
@@ -41,19 +41,19 @@ export function ShoesFemale() {
     ];
 
     return (
-        <div className="herr-accessoarer">
+        <div className="dam-skor">
 
             <div className="landing-image-container">
                 <img
                     src={accessoarerLandingImage}
-                    alt="Herr Accessories Landing"
+                    alt="dam skor Landing"
                     className="landing-image"
                 />
             </div>
 
             <h1>Dam skor</h1>
             <div className="content-cards">
-                {accessories.map((card) => (
+                {shoes.map((card) => (
                     <ContentCard
                         key={card.id}
                         image={card.image}
