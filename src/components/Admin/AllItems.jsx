@@ -4,8 +4,6 @@ import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css"
 export function AllItems() {
     
-    const [allItems, setAllItems] = useState(flattenItems(items));
-
     const flattenItems = (items) => {
         const result = [];
         items.forEach((itemGroup)=>{
@@ -26,25 +24,7 @@ export function AllItems() {
         return result;
     }
 
-    function AddItemForm({onAdditem,closePopup}){
-        const [formData,setFormData] = useState({
-            id:"",
-            name:"",
-            price:"",
-            img:"",
-        });
-    }
-
-    function handlerAddItem(newItem){
-        setAllItems((prevItems) => [...prevItems,newItem])
-    }
-
-    const handleChange = (e) => {
-        const {name,value} = e.target;
-        setFormData((prev) => ({...prev,[name]:value}))
-    }
-
-
+    const [allItems, setAllItems] = useState(flattenItems(items));
 
     const cards = flattenItems(items);
     if(cards.length === 0) return(<p>Inga produkter hittades!</p>)
@@ -54,13 +34,6 @@ export function AllItems() {
         <div className="content">
           <h2 className="title-AllItems" style={{textAlign:"center",fontWeight:"bold",textTransform:"uppercase"}} >Alla Produkter</h2>
           <button className="add-item">Lägg till en ny produkt</button>
-          <Popup trigger={<button className="add-item">Lägg till en ny produkt</button>} modal nested>
-            {(close) => (
-                <AddItemForm
-                    onAdditem={handlerAddItem}
-                    closePopup={close}/>
-            )}
-          </Popup>
           <div className="content-cards">
             {cards.map((card) => (
               <div key={card.id} className="content-card">
