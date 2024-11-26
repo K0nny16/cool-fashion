@@ -11,7 +11,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Content />} />
-        <Route path="/allItems" element={<SeAllaItems />} />
+        <Route path="/allItems" element={<AllItems />} />
         <Route path="/Resale" element={<Resale />} />
         {/* Lägg till nya routes här för nyhter, dam skor, herr skor, osv*/}
       </Routes>
@@ -19,5 +19,4 @@ function App() {
     </Router>
   );
 }
-
 export default App;

@@ -4,7 +4,6 @@ const image1 = "assets/Product1.webp";
 const image2 = "assets/Product2.jpeg";
 const image3 = "assets/Product3.png";
 const image4 = "assets/Product4.png";
-const landingImage = "assets/cool-fashion-LandingImage.png";
 const herrskor = "/assets/herrskor.PNG";
 const damskor = "/assets/damskor.PNG";
 const accessoarer = "/assets/accessoarer.PNG";
