@@ -15,7 +15,9 @@ export function Navbar(){
             {name:"Man",content:["Skor","Kläder","Accessoarer"]},
         ]},
         {name:"About us",dropdown:["Contact us","Where to find us"]},
-        {name:"Cart",dropdown:["Checkout","Returns"]}
+        {name:"Cart",dropdown:["Checkout","Returns"]},
+        {name:"Resale"},
+        {name:"Admin",dropdown:["Redigera Produkter","Lägg till Produkter","Skapa Kategori","Se Alla Produkter"]}
     ]
     return (
         <nav className="navbar">
@@ -27,7 +29,11 @@ export function Navbar(){
                 onMouseEnter={() => setOpenDropdown(item.name)} 
                 onMouseLeave={() => setOpenDropdown(null)}
               >
-                <span>{item.name}</span>
+                <span onClick={() => {
+                  if(!item.dropdown){
+                    handleItemClick(item.name,item.name);
+                  }
+                }}>{item.name}</span>
                 {openDropdown === item.name && item.dropdown && ( //Aktiverar dropdown ifall det är aktivt (alltså man håller över något av meny alternativen.)
                   <ul className="dropdown">
                     {item.dropdown.map((subItem, index) => //Loopar igen alla objekten.
