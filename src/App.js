@@ -2,7 +2,6 @@ import { Navbar } from "./components/nav";
 import { Footer } from "./components/footer";
 import { Content } from "./components/content";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { SeAllaItems } from "./components/Admin/SeAllaItems";
 import { Resale } from "./components/resale";
 
 function App() {

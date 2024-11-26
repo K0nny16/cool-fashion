@@ -26,7 +26,23 @@ export function AllItems() {
         return result;
     }
 
+    function AddItemForm({onAdditem,closePopup}){
+        const [formData,setFormData] = useState({
+            id:"",
+            name:"",
+            price:"",
+            img:"",
+        });
+    }
 
+    function handlerAddItem(newItem){
+        setAllItems((prevItems) => [...prevItems,newItem])
+    }
+
+    const handleChange = (e) => {
+        const {name,value} = e.target;
+        setFormData((prev) => ({...prev,[name]:value}))
+    }
 
 
 
@@ -37,6 +53,14 @@ export function AllItems() {
     return (
         <div className="content">
           <h2 className="title-AllItems" style={{textAlign:"center",fontWeight:"bold",textTransform:"uppercase"}} >Alla Produkter</h2>
+          <button className="add-item">Lägg till en ny produkt</button>
+          <Popup trigger={<button className="add-item">Lägg till en ny produkt</button>} modal nested>
+            {(close) => (
+                <AddItemForm
+                    onAdditem={handlerAddItem}
+                    closePopup={close}/>
+            )}
+          </Popup>
           <div className="content-cards">
             {cards.map((card) => (
               <div key={card.id} className="content-card">
