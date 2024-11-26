@@ -95,6 +95,83 @@
   color: #d2b48c;
 }
 
+.contact-form-button {
+  padding: 10px 20px;
+  margin: auto;
+  border: none;
+  background-color: #d2b48c;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+}
+.popup {
+  background: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  width: 500px;
+  height: 30rem;
+  max-width: 500px;
+  margin: 0 auto;
+  box-shadow: 10px 10px 1000px black;
+  text-align: center;
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: bold;
+}
+
+.popup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 500px;
+}
+
+.popup-form input {
+  background-color: lightgray;
+  border-radius: 2px;
+  padding: 10px;
+  box-shadow: 1px 1px 1px black;
+  font-family: "Josefin Sans", sans-serif;
+  text-align: center;
+}
+.popup-form textarea {
+  height: 100px;
+  background-color: lightgray;
+  border-radius: 2px;
+  padding: 10px;
+  box-shadow: 1px 1px 1px black;
+  font-family: "Josefin Sans", sans-serif;
+  text-align: center;
+}
+
+.popup-form-send {
+  border-radius: 3px;
+  transition: 0.2s linear;
+  background: #00b288;
+  height: 50px;
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.popup-form-close {
+  border-radius: 3px;
+  transition: 0.2s linear;
+  background: rgb(255, 73, 73);
+  height: 50px;
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+.form-buttons {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
 @media (max-width: 768px) {
   .footer {
     flex-direction: column;
