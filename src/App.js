@@ -16,13 +16,10 @@ function App() {
         <Route path="/" element={<Content />} />
         <Route path="/allItems" element={<AllItems />} />
         <Route path="/Resale" element={<Resale />} />
-<<<<<<< HEAD
         <Route path="/accessories" element={<Accessories />} />
         <Route path="/maleShoes" element={<MaleShoes />} />
-=======
         <Route path="/accessoriesMale" element={<Accessories />} />
         <Route path="/shoesFemale" element={<ShoesFemale />} />
->>>>>>> b5a4712fea8c59a244f756ca9c3dde4889ed5a2d
         {/* Lägg till nya routes här för nyhter, dam skor, herr skor, osv*/}
       </Routes>
       <Footer />
