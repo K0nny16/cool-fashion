@@ -79,11 +79,3 @@ body {
 .nested-dropdown-item:hover {
   color: #ff6060; /* Ljusare röd text vid hover */
 }
-
-.search-bar input {
-  padding: 0.5rem;
-  border: 1px solid #333;
-  border-radius: 4px;
-  background-color: #1a1a1a; /* Mörk bakgrund för input */
-  color: #fff;
-}

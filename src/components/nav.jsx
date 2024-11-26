@@ -1,13 +1,15 @@
 import React,{useState} from "react"
 import "../css/nav.css"
-import { SeAllaItems } from "./Admin/SeAllaItems";
+import { useNavigate } from "react-router-dom";
 
 export function Navbar(){
     const [openDropdown, setOpenDropdown] = useState(null);
+    const navigate = useNavigate();
     //Placeholder funktion för logiken med vad man klickar på.
     function handleItemClick(parentCategory,itemName){
         console.log(`Clicked on ${itemName} under ${parentCategory}`)
         alert(`Clicked on ${itemName} under ${parentCategory}`)
+        if(itemName === "Se Alla Produkter") navigate("/AllItems")
     }
     //Struktur för hur menyn kommer att vara utformad.
     const menuItems = [
