@@ -55,7 +55,7 @@ body {
 }
 
 .content {
-    padding-top: 20px;
+    padding-top: 0px;
     padding-bottom: 20px;
     max-width: 100%;
     margin: 0 auto;
@@ -167,3 +167,14 @@ body {
     text-align: center;  /* Justera rubriken i mitten */
     margin-bottom: 20px;  /* Ge lite avstånd under rubriken */
 }
+
+.black-friday-banner {
+    background-color: red;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 5px black;
+  }
