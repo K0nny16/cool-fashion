@@ -55,10 +55,50 @@ body {
 }
 
 .content {
-    padding: 20px;
-    max-width: 1200px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    max-width: 100%;
     margin: 0 auto;
 }
+
+.content-category-img{
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Delar skärmen i två lika stora kolumner */
+    grid-template-rows: 1fr; /* En rad */
+    height: 100vh; /* Hela skärmhöjden */
+    gap: 0; /* Ingen mellanrum mellan bilder */
+    overflow: hidden; /* Förhindrar bilder från att gå utanför */
+    object-fit: cover;
+}
+
+.content-category-img > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Gör att bilder täcker sin ruta utan att bli deformerade */
+  }
+  
+  .content-category-vertical-img {
+    display: grid;
+    grid-template-rows: 1fr 1fr; /* Dela högerkolumnen i två lika stora rutor */
+    grid-template-columns: 1fr; /* En kolumn */
+    height: 100%;
+  }
+  
+.content-category-vertical-img > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.content-category-img > img:hover {
+  transform: scale(1.03); /* Förstorar bilden med 3 % */
+  cursor: pointer; /* Ändrar muspekaren till en hand */
+}
+
+.content-category-vertical-img > img:hover {
+    transform: scale(1.03); /* Förstorar bilden med 3 % */
+    cursor: pointer; /* Ändrar muspekaren till en hand */
+  }
 
 .content-landing-img img {
 
@@ -80,6 +120,13 @@ body {
     text-align: center;
     max-width: 250px;
 }
+
+.content-card:hover{
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 30px 40px 0 rgba(0, 0, 0, 0.50);
+    transition: box-shadow 0.3s ease-in-out;
+    transform: scale(1.02);
+    /*cursor: pointer;*/
+  }
 
 .content-card-image {
     width: 150px;
@@ -114,6 +161,11 @@ body {
     background-color: var(--color2, #555);
 }
 
-
+.news-title {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;  /* Justera rubriken i mitten */
+    margin-bottom: 20px;  /* Ge lite avstånd under rubriken */
+  }
 
 

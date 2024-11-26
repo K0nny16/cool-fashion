@@ -5,6 +5,9 @@ const image2 = "assets/Product2.jpeg";
 const image3 = "assets/Product3.png";
 const image4 = "assets/Product4.png";
 const landingImage = "assets/cool-fashion-LandingImage.png"
+const herrskor = "/assets/herrskor.PNG";
+const damskor = "/assets/damskor.PNG";
+const accessoarer = "/assets/accessoarer.PNG";
 
 // Komponent för content kortet
 export function ContentCard({
@@ -60,11 +63,19 @@ export function Content() {
 
   return (
     <div className="content">
-      <div className="content-landing-img">
+      {/* <div className="content-landing-img">
         <img src={landingImage} alt="Landing"/>
+      </div> */}
+      <div className="content-category-img">
+        <img src={herrskor} alt="herrskor" />
+        <div className="content-category-vertical-img">
+        <img src={damskor} alt="damskor" />
+        <img src={accessoarer} alt="accessoarer" />
+        </div>
       </div>
-
+    <h2 className="news-title">NYHETER</h2>
       <div className="content-cards">
+        
         {cards.map((card) => (
           <ContentCard
             key={card.id}
