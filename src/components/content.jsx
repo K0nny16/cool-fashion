@@ -69,6 +69,9 @@ export function Content() {
       {/* <div className="content-landing-img">
         <img src={landingImage} alt="Landing"/>
       </div> */}
+      <div className="black-friday-banner">
+        BLACK FRIDAY
+      </div>
       <div className="content-category-img">
         <img src={herrskor} alt="herrskor" />
         <div className="content-category-vertical-img">

@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Happy+Monkey&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+root,
+root.MOODSBORD1 {
+
+    --color1: #FF69B4;
+    --color2: #008080;
+    --color3: #556B2F;
+    --color4: #D2B48C;
+    --color5: #B57EDC;
+    --color6: #000000;
+    --color7: #FF4500;
+    --family-font: "Josefin Sans", sans-serif;
+}
+
+body {
+    font-family: var(--family-font, sans-serif), serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    flex-direction: column;
+}
+
+.App-header {
+    background-color: var(--color1, #000);
+    color: var(--color6, #fff);
+    padding: 20px;
+    text-align: center;
+}
+
+.herr-accessoarer {
+    padding: 20px;
+    text-align: center;
+}
+
+.herr-accessoarer h1 {
+    font-size: 2rem;
+}
+
+.content {
+      padding-top: 20px;
+      padding-bottom: 20px;
+      max-width: 100%;
+      margin: 0 auto;
+}
+
+/* Centered Landing Image */
+.landing-image-container {
+    width: 100%;
+    height: 300px; /* Adjust the height as needed */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.landing-image {
+    width: 100%;
+    height: 100%;
+    object-fit: scale-down; /* Ensures the image scales proportionally without distortion */
+    border-radius: 10px; /* Optional for rounded edges */
+}
+
+
+.content-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 140px;
+}
+
+.content-card {
+    background-color: var(--color4, #fff);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    text-align: center;
+    max-width: 250px;
+}
+
+.content-card:hover{
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 30px 40px 0 rgba(0, 0, 0, 0.50);
+    transition: box-shadow 0.3s ease-in-out;
+    transform: scale(1.02);
+    /*cursor: pointer;*/
+}
+
+.content-card-image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover ;
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+.content-card-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.content-card-price {
+    font-size: 16px;
+    color: var(--color5);
+}
+
+.content-card-button {
+    background-color: var(--color1, #000);
+    color: var(--color6, #fff);
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.content-card-button:hover {
+    background-color: var(--color2, #555);
+}
