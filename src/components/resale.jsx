@@ -1,5 +1,5 @@
 import { ContentCard } from "./content";
-import { resaleItems } from "../items";
+import { resaleItems } from "../resaleItems";
 
 export function Resale() {
   return (
