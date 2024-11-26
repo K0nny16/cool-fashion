@@ -8,7 +8,6 @@ export function Navbar(){
     function handleItemClick(parentCategory,itemName){
         console.log(`Clicked on ${itemName} under ${parentCategory}`)
         alert(`Clicked on ${itemName} under ${parentCategory}`)
-        if(itemName == "Se Alla Produkter") <SeAllaItems/>
     }
     //Struktur för hur menyn kommer att vara utformad.
     const menuItems = [
@@ -21,6 +20,7 @@ export function Navbar(){
         {name:"Resale"},
         {name:"Admin",dropdown:["Redigera Produkter","Lägg till Produkter","Skapa Kategori","Se Alla Produkter"]}
     ]
+    
     return (
         <nav className="navbar">
           <ul className="navbar-menu">
