@@ -11,7 +11,8 @@ export function Navbar(){
         alert(`Clicked on ${itemName} under ${parentCategory}`)
         if(itemName === "Se Alla Produkter") navigate("/AllItems")
         if(itemName === "Resale") navigate("/Resale")
-        if(itemName === "Accessoarer") navigate("/accessories")
+        if(itemName === "Accessoarer" && parentCategory === "Man") navigate("/accessoriesMale")
+        if (parentCategory === "Dam" && itemName === "Skor") navigate("/shoesFemale")
     }
     //Struktur för hur menyn kommer att vara utformad.
     const menuItems = [
