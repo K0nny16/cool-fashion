@@ -4,24 +4,45 @@ export const items = [
             Skor: [
                 {
                     id: 1,
-                    name: "testsko",
-                    pris: 70,
-                    date: "2023-03-03",
+                    name: "Elegant Oxford",
+                    pris: 1200,
+                    date: "2024-01-15",
                     img: "/assets/testSko.jpeg"
                 },
                 {
                     id: 2,
-                    name: "snyggsko",
-                    pris: 150,
-                    date: "2023-04-01",
-                    img: "/assets/snyggSko.jpg"
+                    name: "Casual Sneaker",
+                    pris: 850,
+                    date: "2024-02-10",
+                    img: "/assets/testSko.jpeg"
                 },
                 {
                     id: 3,
-                    name: "löparsko",
-                    pris: 300,
-                    date: "2023-05-15",
-                    img: "/assets/löparSko.jpg"
+                    name: "Sporty Runner",
+                    pris: 950,
+                    date: "2024-03-05",
+                    img: "/assets/testSko.jpeg"
+                },
+                {
+                    id: 4,
+                    name: "Classic Loafer",
+                    pris: 1100,
+                    date: "2024-03-20",
+                    img: "/assets/testSko.jpeg"
+                },
+                {
+                    id: 5,
+                    name: "Hiking Boot",
+                    pris: 1400,
+                    date: "2024-04-01",
+                    img: "/assets/testSko.jpeg"
+                },
+                {
+                    id: 6,
+                    name: "Modern Derby",
+                    pris: 1300,
+                    date: "2024-04-15",
+                    img: "/assets/testSko.jpeg"
                 }
             ],
             Kläder: [
