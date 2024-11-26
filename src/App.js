@@ -15,7 +15,7 @@ function App() {
         <Route path="/" element={<Content />} />
         <Route path="/allItems" element={<AllItems />} />
         <Route path="/Resale" element={<Resale />} />
-        <Route path="/accessories" element={<Accessories />} />
+        <Route path="/accessoriesMale" element={<Accessories />} />
         <Route path="/shoesFemale" element={<ShoesFemale />} />
         {/* Lägg till nya routes här för nyhter, dam skor, herr skor, osv*/}
       </Routes>
