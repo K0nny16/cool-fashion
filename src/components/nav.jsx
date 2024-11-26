@@ -1,5 +1,6 @@
 import React,{useState} from "react"
 import "../css/nav.css"
+import { SeAllaItems } from "./Admin/SeAllaItems";
 
 export function Navbar(){
     const [openDropdown, setOpenDropdown] = useState(null);
@@ -7,6 +8,7 @@ export function Navbar(){
     function handleItemClick(parentCategory,itemName){
         console.log(`Clicked on ${itemName} under ${parentCategory}`)
         alert(`Clicked on ${itemName} under ${parentCategory}`)
+        if(itemName == "Se Alla Produkter") <SeAllaItems/>
     }
     //Struktur för hur menyn kommer att vara utformad.
     const menuItems = [
