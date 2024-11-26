@@ -10,6 +10,7 @@ export function Navbar(){
         console.log(`Clicked on ${itemName} under ${parentCategory}`)
         alert(`Clicked on ${itemName} under ${parentCategory}`)
         if(itemName === "Se Alla Produkter") navigate("/AllItems")
+        if(itemName === "Resale") navigate("/Resale")
     }
     //Struktur för hur menyn kommer att vara utformad.
     const menuItems = [
