@@ -1,10 +1,10 @@
 import "../css/content.css";
 
-const image1 = "assets/Product1.webp"
+const image1 = "assets/Product1.webp";
 const image2 = "assets/Product2.jpeg";
 const image3 = "assets/Product3.png";
 const image4 = "assets/Product4.png";
-const landingImage = "assets/cool-fashion-LandingImage.png"
+const landingImage = "assets/cool-fashion-LandingImage.png";
 const herrskor = "/assets/herrskor.PNG";
 const damskor = "/assets/damskor.PNG";
 const accessoarer = "/assets/accessoarer.PNG";
@@ -16,12 +16,16 @@ export function ContentCard({
   price,
   buttonText,
   onButtonClick,
+  description,
+  seller,
 }) {
   return (
     <div className="content-card">
       <img src={image} alt={title} className="content-card-image" />
       <h3 className="content-card-title">{title}</h3>
       <p className="content-card-price">{price}</p>
+      <p className="content-card-seller">{seller}</p>
+      <p className="content-card-description">{description}</p>
       <button className="content-card-button" onClick={onButtonClick}>
         {buttonText}
       </button>
@@ -69,13 +73,12 @@ export function Content() {
       <div className="content-category-img">
         <img src={herrskor} alt="herrskor" />
         <div className="content-category-vertical-img">
-        <img src={damskor} alt="damskor" />
-        <img src={accessoarer} alt="accessoarer" />
+          <img src={damskor} alt="damskor" />
+          <img src={accessoarer} alt="accessoarer" />
         </div>
       </div>
-    <h2 className="news-title">NYHETER</h2>
+      <h2 className="news-title">NYHETER</h2>
       <div className="content-cards">
-        
         {cards.map((card) => (
           <ContentCard
             key={card.id}
