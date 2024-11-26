@@ -3,7 +3,7 @@ import { Footer } from "./components/footer";
 import { Content } from "./components/content";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Resale } from "./components/resale";
-import { AllItems } from "./components/Admin/AllItems.jsx";
+import { AllItems } from "./components/Admin/AllItems";
 
 function App() {
   return (
