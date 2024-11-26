@@ -6,7 +6,7 @@ import { Resale } from "./components/resale";
 import { AllItems } from "./components/Admin/AllItems";
 import { Accessories } from "./components/accessories";
 import { MaleShoes } from "./components/shoesMale";
-//import {ShoesFemale} from "./components/shoesFemale";
+import { ShoesFemale } from "./components/shoesFemale";
 
 function App() {
   return (
