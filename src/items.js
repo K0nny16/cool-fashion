@@ -53,6 +53,43 @@ export const items = [
                     date: "2021-03-30",
                     img: "/assets/herrTest.jpg"
                 }
+            ],
+            accessories: [
+                {
+                    id: 1,
+                    name: "test1",
+                    pris: 500,
+                    date: "2021-03-30",
+                    img: "/assets/herrTest.jpg"
+                },
+                {
+                    id: 2,
+                    name: "test2",
+                    pris: 500,
+                    date: "2021-03-30",
+                    img: "/assets/herrTest.jpg"
+                },
+                {
+                    id: 3,
+                    name: "test3",
+                    pris: 500,
+                    date: "2021-03-30",
+                    img: "/assets/herrTest.jpg"
+                },
+                {
+                    id: 4,
+                    name: "test4",
+                    pris: 500,
+                    date: "2021-03-30",
+                    img: "/assets/herrTest.jpg"
+                },
+                {
+                    id: 5,
+                    name: "test5",
+                    pris: 500,
+                    date: "2021-03-30",
+                    img: "/assets/herrTest.jpg"
+                }
             ]
         },
         Dam: {
