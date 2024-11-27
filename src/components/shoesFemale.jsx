@@ -2,7 +2,7 @@ import {items} from "../items";
 import {ContentCard} from "./content";
 import "../css/shoes.css";
 
-const LandingImage = "/assets/damskor.PNG";
+const landingImage = "/assets/damskor.PNG";
 
 export function ShoesFemale() {
     const femaleShoes = items.flatMap(itemGroup => itemGroup.Dam?.Skor || []);
@@ -11,7 +11,7 @@ export function ShoesFemale() {
         <div className="dam-skor">
             <div className="landing-image-container">
                 <img
-                    src={LandingImage}
+                    src={landingImage}
                     alt="dam skor Landing"
                     className="landing-image"
                 />

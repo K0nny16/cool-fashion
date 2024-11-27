@@ -2,7 +2,7 @@ import {items} from "../items";
 import { ContentCard } from "./content";
 import "../css/accessories.css";
 
-const LandingImage  = "/assets/accessoarer.PNG";
+const landingImage  = "/assets/accessoarer.PNG";
 
 export function Accessories() {
     const accessories = items.flatMap((itemGroup) => itemGroup.Herr?.accessories || [])
@@ -11,7 +11,7 @@ export function Accessories() {
         <div className="herr-accessoarer">
             <div className="landing-image-container">
                 <img
-                    src={LandingImage}
+                    src={landingImage}
                     alt="Herr Accessories Landing"
                     className="landing-image"
                 />
@@ -26,7 +26,7 @@ export function Accessories() {
                         title={acc.name}
                         price={`${acc.pris} kr`}
                         buttonText="Köp"
-                        seller="Damsko"
+                        seller="Accessoarer"
                         onButtonClick={() => alert(`Du klickade på ${acc.name}`)}
                     />
                 ))}
