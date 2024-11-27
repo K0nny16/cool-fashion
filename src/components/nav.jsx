@@ -8,7 +8,7 @@ export function Navbar(){
     //Placeholder funktion för logiken med vad man klickar på.
     function handleItemClick(parentCategory,itemName){
         console.log(`Clicked on ${itemName} under ${parentCategory}`)
-        alert(`Clicked on ${itemName} under ${parentCategory}`)
+      //  alert(`Clicked on ${itemName} under ${parentCategory}`)
         if(itemName === "Se Alla Produkter") navigate("/AllItems")
         if(itemName === "Resale") navigate("/Resale")
         if(itemName === "Accessoarer" && parentCategory === "Man") navigate("/accessoriesMale")
