@@ -58,10 +58,38 @@ export const items = [
         Dam: {
             Skor: [
                 {
-                    id: 5,
+                    id: 1,
+                    name: "Waling Clouds boots",
+                    pris: 799,
+                    date: "2020-01-02",
+                    img: "/assets/löparSko.jpg"
+                },
+                {
+                    id: 2,
+                    name: "Elons Slippers",
+                    pris: 799,
+                    date: "2023-01-02",
+                    img: "/assets/damskotest.jpg"
+                },
+                {
+                    id: 3,
                     name: "test",
                     pris: 799,
                     date: "2020-01-02",
+                    img: "/assets/testSko.jpeg"
+                },
+                {
+                    id: 4,
+                    name: "test",
+                    pris: 799,
+                    date: "2021-01-02",
+                    img: "/assets/snyggSko.jpg"
+                },
+                {
+                    id: 5,
+                    name: "test",
+                    pris: 799,
+                    date: "2020-04-02",
                     img: "/assets/damskotest.jpg"
                 },
                 {
