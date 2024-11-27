@@ -13,6 +13,7 @@ export function Navbar(){
         if(itemName === "Resale") navigate("/Resale")
         if(itemName === "Accessoarer" && parentCategory === "Man") navigate("/accessoriesMale")
         if (parentCategory === "Dam" && itemName === "Skor") navigate("/shoesFemale")
+        if (parentCategory === "Man" && itemName === "Skor") navigate("/maleShoes")
     }
     //Struktur för hur menyn kommer att vara utformad.
     const menuItems = [
