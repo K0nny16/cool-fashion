@@ -7,6 +7,7 @@ import { AllItems } from "./components/Admin/AllItems";
 import { Accessories } from "./components/accessories";
 import { MaleShoes } from "./components/shoesMale";
 import { ShoesFemale } from "./components/shoesFemale";
+import { EditItems } from "./components/editItems";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/maleShoes" element={<MaleShoes />} />
         <Route path="/accessoriesMale" element={<Accessories />} />
         <Route path="/shoesFemale" element={<ShoesFemale />} />
+        <Route path="/editItem" element={<EditItems />} />
         {/* Lägg till nya routes här för nyhter, dam skor, herr skor, osv*/}
       </Routes>
       <Footer />
