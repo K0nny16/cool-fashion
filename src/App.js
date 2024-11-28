@@ -7,6 +7,7 @@ import { AllItems } from "./components/Admin/AllItems";
 import { Accessories } from "./components/accessories";
 import { MaleShoes } from "./components/shoesMale";
 import { ShoesFemale } from "./components/shoesFemale";
+import { AddCategory } from "./components/Admin/addCategory";
 import { EditItems } from "./components/editItems";
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Content />} />
         <Route path="/allItems" element={<AllItems />} />
+        <Route path="/addCategory" element={<AddCategory />} />
         <Route path="/Resale" element={<Resale />} />
         <Route path="/accessories" element={<Accessories />} />
         <Route path="/maleShoes" element={<MaleShoes />} />
