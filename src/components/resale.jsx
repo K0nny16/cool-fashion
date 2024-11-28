@@ -1,11 +1,21 @@
 import { ContentCard } from "./content";
 import { resaleItems } from "../resaleItems";
+import "../css/resale.css";
+import resalesMp4 from "../assets/Resales.mp4";
 
 export function Resale() {
   return (
     <>
-      <div className="resale-container">
-        <h1>Resale Marketplace</h1>
+      <div className="resaleContainer">
+        <video
+          className="video"
+          src={resalesMp4}
+          alt="Resales video"
+          autoPlay
+          loop
+          muted
+          playsInline
+        />
         <div className="content-cards">
           {resaleItems.map((item) => (
             <ContentCard

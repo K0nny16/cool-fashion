@@ -1,0 +1,18 @@
+@import url("https://fonts.googleapis.com/css2?family=Bokor&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Oswald:wght@200&family=Roboto:wght@100&display=swap");
+
+.resaleContainer {
+  background-color: white;
+  font-family: "Josefin Sans", sans-serif;
+  font-optical-sizing: auto;
+}
+
+.video {
+  margin: auto;
+  width: 100%;
+}
+
+h1 {
+  font-size: 75px;
+  padding-top: 10%;
+  margin-top: 0px;
+}
