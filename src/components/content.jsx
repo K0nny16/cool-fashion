@@ -1,9 +1,6 @@
 import "../css/content.css";
+import { useNavigate } from "react-router-dom";
 
-const image1 = "assets/Product1.webp";
-const image2 = "assets/Product2.jpeg";
-const image3 = "assets/Product3.png";
-const image4 = "assets/Product4.png";
 const herrskor = "/assets/herrskor.PNG";
 const damskor = "/assets/damskor.PNG";
 const accessoarer = "/assets/accessoarer.PNG";
@@ -33,31 +30,37 @@ export function ContentCard({
 }
 
 export function Content() {
+  const navigate = useNavigate();
+
+  const handleNavigate = (path) => {
+    navigate(path);
+  };
+
   const cards = [
     {
       id: 1,
-      image: image1,
+      image: "/assets/Product1.webp",
       title: "Product 1",
       price: 100,
       buttonText: "Buy",
     },
     {
-      id: 1,
-      image: image2,
+      id: 2,
+      image: "/assets/Product2.jpeg",
       title: "Product 2",
       price: 100,
       buttonText: "Buy",
     },
     {
-      id: 1,
-      image: image3,
+      id: 3,
+      image: "/assets/Product3.png",
       title: "Product 3",
       price: 100,
       buttonText: "Buy",
     },
     {
-      id: 1,
-      image: image4,
+      id: 4,
+      image: "/assets/Product4.png",
       title: "Product 4",
       price: 100,
       buttonText: "Buy",
@@ -66,17 +69,32 @@ export function Content() {
 
   return (
     <div className="content">
-      {/* <div className="content-landing-img">
-        <img src={landingImage} alt="Landing"/>
-      </div> */}
       <div className="black-friday-banner">
         BLACK FRIDAY
       </div>
       <div className="content-category-img">
-        <img src={herrskor} alt="herrskor" />
+        {/* Herrskor */}
+        <img
+          src={herrskor}
+          alt="herrskor"
+          className="clickable-image"
+          onClick={() => handleNavigate("/maleShoes")}
+        />
         <div className="content-category-vertical-img">
-          <img src={damskor} alt="damskor" />
-          <img src={accessoarer} alt="accessoarer" />
+          {/* Damskor */}
+          <img
+            src={damskor}
+            alt="damskor"
+            className="clickable-image"
+            onClick={() => handleNavigate("/shoesFemale")}
+          />
+          {/* Accessoarer */}
+          <img
+            src={accessoarer}
+            alt="accessoarer"
+            className="clickable-image"
+            onClick={() => handleNavigate("/accessoriesMale")}
+          />
         </div>
       </div>
       <h2 className="news-title">NYHETER</h2>

@@ -1,51 +1,17 @@
-import "../css/shoes.css";
+import {items} from "../items";
 import {ContentCard} from "./content";
+import "../css/shoes.css";
 
-const accessoarerLandingImage  = "/assets/damskor.PNG";
-const image1 = "assets/löparSko.jpg"
-const image2 = "assets/Product2.jpeg";
-const image3 = "assets/snyggSko.jpg";
-const image4 = "assets/sommarskodam.jpg";
-
+const landingImage = "/assets/damskor.PNG";
 
 export function ShoesFemale() {
-    const shoes = [
-        {
-            id: 1,
-            image: image1,
-            title: "Product 1",
-            price: 100,
-            buttonText: "Buy",
-        },
-        {
-            id: 2,
-            image: image2,
-            title: "Product 2",
-            price: 100,
-            buttonText: "Buy",
-        },
-        {
-            id: 3,
-            image: image3,
-            title: "Product 3",
-            price: 100,
-            buttonText: "Buy",
-        },
-        {
-            id: 4,
-            image: image4,
-            title: "Product 4",
-            price: 100,
-            buttonText: "Buy",
-        },
-    ];
+    const femaleShoes = items.flatMap(itemGroup => itemGroup.Dam?.Skor || []);
 
     return (
         <div className="dam-skor">
-
             <div className="landing-image-container">
                 <img
-                    src={accessoarerLandingImage}
+                    src={landingImage}
                     alt="dam skor Landing"
                     className="landing-image"
                 />
@@ -53,14 +19,15 @@ export function ShoesFemale() {
 
             <h1>Dam skor</h1>
             <div className="content-cards">
-                {shoes.map((card) => (
+                {femaleShoes.map((shoe) => (
                     <ContentCard
-                        key={card.id}
-                        image={card.image}
-                        title={card.title}
-                        price={card.price}
-                        buttonText={card.buttonText}
-                        onButtonClick={() => alert(`${card.title} köpt!`)}
+                        key={shoe.id}
+                        image={shoe.img}
+                        title={shoe.name}
+                        price={`${shoe.pris} kr`}
+                        buttonText="Köp"
+                        seller="Damsko"
+                        onButtonClick={() => alert(`Du klickade på ${shoe.name}`)}
                     />
                 ))}
             </div>
