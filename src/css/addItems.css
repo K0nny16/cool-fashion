@@ -1,0 +1,84 @@
+.app-container {
+    font-family: Arial, sans-serif;
+    background-color: #121212; /* Svart bakgrund för denna del */
+    color: #f5f5f5; /* Ljus textfärg */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Täcker hela höjden av sidan */
+  }
+
+  .product-form-container {
+    background-color: #1e1e1e; /* Mörkare grå för formulärbakgrund */
+    border: 1px solid #b71c1c; /* Mörkröd ram */
+    border-radius: 10px;
+    padding: 40px; /* Mer padding för att skapa utrymme */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Lätt skugga */
+    width: 100%;
+    max-width: 600px; /* Öka maxbredden */
+    margin: 20px; /* Marginal runt innehållet */
+  }
+  
+  .product-form {
+    padding: 20px;
+  }
+  
+  .product-form h2 {
+    text-align: center;
+    color: #b71c1c; /* Röd ton för rubriken */
+    margin-bottom: 20px;
+  }
+  
+  .product-form-group {
+    margin-bottom: 15px;
+  }
+  
+  .product-form-label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #ff5252; /* Ljusare röd ton för text */
+  }
+  
+  .product-form-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ff5252;
+    border-radius: 5px;
+    background-color: #262626;
+    color: #f5f5f5;
+  }
+  
+  .product-form-input-file {
+    padding: 5px;
+  }
+  
+  .product-form-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #b71c1c; /* Mörkröd */
+    color: #f5f5f5; /* Ljus textfärg */
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .product-form-button:hover {
+    background-color: #ff5252; /* Ljusröd vid hover */
+  }
+  
+  .product-form-image {
+    border: 2px solid #b71c1c; /* Röd kant runt bilder */
+    border-radius: 5px;
+    width: 100px;
+    margin: 5px;
+  }
+  
+  .product-form-preview-title {
+    color: #ff5252; /* Röd för förhandsvisningstitel */
+    margin-top: 20px;
+  }

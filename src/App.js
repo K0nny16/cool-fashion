@@ -9,6 +9,7 @@ import { MaleShoes } from "./components/shoesMale";
 import { ShoesFemale } from "./components/shoesFemale";
 import { AddCategory } from "./components/Admin/addCategory";
 import { EditItems } from "./components/editItems";
+import { AddItems } from "./components/Admin/AddItems";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/accessoriesMale" element={<Accessories />} />
         <Route path="/shoesFemale" element={<ShoesFemale />} />
         <Route path="/editItem" element={<EditItems />} />
+        <Route path="/addItems" element={<AddItems/>}/>
         {/* Lägg till nya routes här för nyhter, dam skor, herr skor, osv*/}
       </Routes>
       <Footer />
