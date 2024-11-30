@@ -28,6 +28,7 @@ export function AddItems(){
             images,
         }
         console.log("Product Data: ",productData)
+        submitToDB(productData)
     }
     //Ifall vi har en backend.
     async function submitToDB (data) {
