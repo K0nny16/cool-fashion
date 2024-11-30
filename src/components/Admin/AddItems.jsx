@@ -29,6 +29,25 @@ export function AddItems(){
         }
         console.log("Product Data: ",productData)
     }
+    //Ifall vi har en backend.
+    async function submitToDB (data) {
+        try{
+            const apiUrl = "";
+            const response = await fetch (apiUrl,{
+                method:"POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data),
+            })
+            if(!response.ok){
+                throw new Error("Failed to submit data to the DB");
+            }
+        }catch(error){
+            console.error("Error submitting data: ",error);
+            alert("Failed to add product.")
+        }
+    }
     
     return (
         <div className="app-container">
