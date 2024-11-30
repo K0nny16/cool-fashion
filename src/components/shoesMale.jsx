@@ -2,20 +2,22 @@ import React from "react";
 import { items } from "../items.js";
 import { ContentCard } from "./content.jsx";
 import "../css/shoes.css";
-const landingImage = "/assets/herrskor-landingimg.png";
+import maleshoesmp4 from "../assets/Maleshoes.mp4";
 
 export function MaleShoes() {
   const maleShoes = items.flatMap((itemGroup) => itemGroup.Herr?.Skor || []);
 
   return (
     <div className="shoes-page">
-      <div className="landing-image-container">
-        <img
-          src={landingImage}
-          alt="landingImage"
-          className="shoes-landing-image"
-        />
-      </div>
+      <video
+        className="video"
+        src={maleshoesmp4}
+        alt="Resales video"
+        autoPlay
+        loop
+        muted
+        playsInline
+      />
 
       <div className="product-list">
         {maleShoes.map((shoe) => (
