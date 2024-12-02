@@ -7,6 +7,7 @@ export function AddItems() {
   const [dateAdded, setDateAdded] = useState("");
   const [images, setImages] = useState("");
   const [category, setCategory] = useState("");
+  const [subCat, setSubCat] = useState("");
   const [quant, setQuant] = useState("");
 
   function handleImageUpload(event) {
@@ -29,6 +30,7 @@ export function AddItems() {
       dateAdded,
       images,
       category,
+      subCat,
       quant,
     };
     console.log("Product Data: ", productData);
@@ -77,6 +79,17 @@ export function AddItems() {
               className="product-form-input"
               value={category}
               onChange={(e) => setCategory(e.target.value)}
+              required
+            />
+          </div>
+          </div>
+          <div className="product-form-group">
+            <label className="product-form-label">Sub Category:</label>
+            <input
+              type="text"
+              className="product-form-input"
+              value={subCat}
+              onChange={(e) => setSubCat(e.target.value)}
               required
             />
           </div>
