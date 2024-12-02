@@ -7,6 +7,7 @@ export function AddItems() {
   const [dateAdded, setDateAdded] = useState("");
   const [images, setImages] = useState("");
   const [category, setCategory] = useState("");
+  const [quant, setQuant] = useState("");
 
   function handleImageUpload(event) {
     const files = Array.from(event.target.files);
@@ -28,6 +29,7 @@ export function AddItems() {
       dateAdded,
       images,
       category,
+      quant,
     };
     console.log("Product Data: ", productData);
     submitToDB(productData);
@@ -75,6 +77,16 @@ export function AddItems() {
               className="product-form-input"
               value={category}
               onChange={(e) => setCategory(e.target.value)}
+              required
+            />
+          </div>
+          <div className="product-form-group">
+            <label className="product-form-label">Quantity of Product:</label>
+            <input
+              type="text"
+              className="product-form-input"
+              value={quant}
+              onChange={(e) => setQuant(e.target.value)}
               required
             />
           </div>
