@@ -82,13 +82,12 @@ export function AddItems() {
               required
             />
           </div>
-          </div>
           <div className="product-form-group">
             <label className="product-form-label">Sub Category:</label>
             <input
               type="text"
               className="product-form-input"
-              value={subCat}
+              value={quant}
               onChange={(e) => setSubCat(e.target.value)}
               required
             />
