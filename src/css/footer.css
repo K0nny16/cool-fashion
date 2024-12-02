@@ -103,13 +103,14 @@
   color: rgb(0, 0, 0);
   cursor: pointer;
 }
+
 .popup {
   background: #fff;
   border-radius: 8px;
   padding: 20px;
-  width: 500px;
-  height: 30rem;
+  width: auto;
   max-width: 500px;
+  height: 30rem;
   margin: 0 auto;
   box-shadow: 10px 10px 1000px black;
   text-align: center;
