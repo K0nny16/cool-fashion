@@ -83,7 +83,7 @@ export function AddItems() {
           <div className="product-form-group">
             <label className="product-form-label">Quantity of Product:</label>
             <input
-              type="text"
+              type="number"
               className="product-form-input"
               value={quant}
               onChange={(e) => setQuant(e.target.value)}
