@@ -1,8 +1,11 @@
 import { initializeApp } from "firebase/app";
+import { getDatabase, ref,push} from "firebase/database";
+import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDsc_ZVxBuhLfKhjkeCtMLFnfk1tb6FOk0",
   authDomain: "cool-fashion-85a8e.firebaseapp.com",
+  databaseURL: "https://cool-fashion-85a8e-default-rtdb.europe-west1.firebasedatabase.app",
   projectId: "cool-fashion-85a8e",
   storageBucket: "cool-fashion-85a8e.firebasestorage.app",
   messagingSenderId: "527073420331",
@@ -10,3 +13,8 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
+const dbRealTime = getDatabase(app);
+const firestoreDB = getFirestore(app)
+
+
+export {dbRealTime, firestoreDB, ref , push}
