@@ -2,7 +2,7 @@ import React,{useState} from "react"
 import "../css/nav.css"
 import { useNavigate } from "react-router-dom";
 
-const logo = "/assets/cool-fashion-logo.PNG";
+const logo = "/assets/cool-fashion-logo2.PNG";
 
 export function Navbar(){
     const [openDropdown, setOpenDropdown] = useState(null);
@@ -25,8 +25,8 @@ export function Navbar(){
             {name:"Dam",content:["Skor","Kläder","Accessoarer"]},
             {name:"Man",content:["Skor","Kläder","Accessoarer"]},
         ]},
-        {name:"About us",dropdown:["Contact us","Where to find us"]},
-        {name:"Cart",dropdown:["Checkout","Returns"]},
+        {name:"Om oss",dropdown:["Kontakta oss","Var finns vi"]},
+        {name:"Kundkorg",dropdown:["Gå till kassan","Returnera"]},
         {name:"Resale"},
         {name:"Admin",dropdown:["Redigera Produkter","Lägg till Produkter","Skapa Kategori","Se Alla Produkter"]}
     ]
