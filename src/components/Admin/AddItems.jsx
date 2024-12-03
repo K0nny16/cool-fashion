@@ -30,6 +30,17 @@ export function AddItems() {
     }
   }
 
+  function resetForm() {
+    setProductName("");
+    setPrice("");
+    setDateAdded("");
+    setImages([]);
+    setCategory("");
+    setQuant("");
+    setSubCategories([]);
+    setSubCat("");
+  }
+
   function handleCategoryChange(e) {
     const selectedCategory = e.target.value;
     setCategory(selectedCategory);
@@ -76,6 +87,7 @@ export function AddItems() {
       quant,
     };
     console.log("Product Data: ", productData);
+    resetForm();
     submitToDB(productData);
   }
 
@@ -104,7 +116,7 @@ export function AddItems() {
   return (
     <div className="app-container">
       <div className="product-form-container">
-        <form className="product-form" onSubmit={handleSubmit}>
+        <form className="product-form" onSubmit={handleSubmit}> 
           <h2>Add a New Product</h2>
           <div className="product-form-group">
             <label className="product-form-label">Product Name:</label>
