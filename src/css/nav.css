@@ -7,18 +7,21 @@ body {
 }
 
 .navbar {
+  height: 70px; /* Specifik höjd */
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #000; /* Svart navbar */
+  background-color: #000;
   color: #fff;
-  padding: 0.5rem 1rem;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* Lätt skugga för djup */
+  padding: 1rem 1rem; /* Öka padding för mer luft */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  overflow: visible;
 }
 
 .navbar-menu {
   list-style: none; /* Ta bort punkter från listobjekt */
   display: flex;
+  position: relative;
   gap: 1rem; /* Snyggt mellanrum mellan knapparna */
   margin: 0;
   padding: 0;
@@ -29,6 +32,7 @@ body {
   padding: 0.5rem 1rem;
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s, border-radius 0.3s;
+  text-align: center;
 }
 
 .navbar-item:hover {
@@ -45,12 +49,13 @@ body {
 .dropdown {
   position: absolute;
   top: 100%;
-  left: 0;
+  left: 50%;
   background-color: #121212; /* Mörk dropdown */
   padding: 0.5rem 0; /* Snyggare avstånd mellan underkategorier */
   border-radius: 4px;
   z-index: 10;
   list-style: none; /* Ta bort punkter från dropdown-menyn */
+  transform: translateX(-50%);
 }
 
 .dropdown-item {
@@ -78,4 +83,23 @@ body {
 
 .nested-dropdown-item:hover {
   color: #ff6060; /* Ljusare röd text vid hover */
+}
+
+.navbar-logo {
+  height: 100%; /* Anpassa till navbarens höjd */
+  max-height: 100px;
+  width: auto;
+}
+
+.navbar-left, .navbar-center, .navbar-right {
+  display: flex;
+  align-items: center; /* Vertikal centrering */
+}
+
+.navbar-search {
+  padding: 0.5rem;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  background-color: #121212;
+  color: #fff;
 }
