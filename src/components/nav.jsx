@@ -16,6 +16,7 @@ export function Navbar(){
         if(itemName === "Redigera Produkter") navigate("/editItem")
         if(itemName === "Skapa Kategori") navigate("/addCategory")
         if(itemName === "Lägg till Produkter") navigate("/addItems")
+        if(itemName === "Login") navigate("/loginpage")
     }
     //Struktur för hur menyn kommer att vara utformad.
     const menuItems = [
@@ -26,7 +27,7 @@ export function Navbar(){
         {name:"About us",dropdown:["Contact us","Where to find us"]},
         {name:"Cart",dropdown:["Checkout","Returns"]},
         {name:"Resale"},
-        {name:"Admin",dropdown:["Redigera Produkter","Lägg till Produkter","Skapa Kategori","Se Alla Produkter"]}
+        {name:"Admin",dropdown:["Redigera Produkter","Lägg till Produkter","Skapa Kategori","Se Alla Produkter"]},
     ]
     
     return (

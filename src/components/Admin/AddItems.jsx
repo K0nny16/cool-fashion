@@ -1,49 +1,17 @@
 import { useEffect, useState } from "react";
 import "../../css/addItems.css";
-import { collection, addDoc } from "firebase/firestore";
-import { firestoreDB } from "../../firebase";
-import imageCompression from "browser-image-compression";
-
 
 export function AddItems() {
   const [productName, setProductName] = useState("");
   const [price, setPrice] = useState("");
   const [dateAdded, setDateAdded] = useState("");
   const [images, setImages] = useState("");
-  const [category, setCategory] = useState("");
-  const [subCat, setSubCat] = useState("");
-  const [quant, setQuant] = useState("");
 
   function handleImageUpload(event) {
-    const files = Array.from(event.target.files).slice(0,3);
-    if (files.length > 3) {
-      alert("You can only upload up to 3 images. The first 3 images have been selected.");
-    }
-    setImages(files);
+    const files = Array.from(event.target.files);
+    const imagePreviews = files.map((file) => URL.createObjectURL(file));
+    setImages(imagePreviews);
   }
-
-  async function compressAndConvertToBase64(files) {
-    const options = {
-      maxSizeMB: 0.33, // Maxstorlek för varje bild i MB
-      maxWidthOrHeight: 1024, // Maxbredd eller höjd i pixlar
-      useWebWorker: true, // För snabbare komprimering
-    };
-  
-    const base64Strings = await Promise.all(
-      files.map(async (file) => {
-        const compressedFile = await imageCompression(file, options);
-        return new Promise((resolve, reject) => {
-          const reader = new FileReader();
-          reader.onloadend = () => resolve(reader.result);
-          reader.onerror = reject;
-          reader.readAsDataURL(compressedFile);
-        });
-      })
-    );
-  
-    return base64Strings;
-  }
-  
 
   useEffect(() => {
     const today = new Date();
@@ -58,35 +26,27 @@ export function AddItems() {
       price,
       dateAdded,
       images,
-      category,
-      subCat,
-      quant,
     };
     console.log("Product Data: ", productData);
     submitToDB(productData);
   }
+  //Ifall vi har en backend.
   async function submitToDB(data) {
     try {
-      // Komprimera och konvertera bilder till Base64
-      const base64Images = await compressAndConvertToBase64(data.images);
-  
-      const productData = {
-        productName: data.productName,
-        price: parseFloat(data.price),
-        dateAdded: data.dateAdded,
-        images: base64Images,
-        category: data.category,
-        subCat: data.subCat,
-        quant: parseInt(data.quant, 10),
-      };
-  
-      const docRef = await addDoc(collection(firestoreDB, "Products"), productData);
-  
-      console.log("Product added! ", docRef.id);
-      alert("Product added successfully!");
+      const apiUrl = "";
+      const response = await fetch(apiUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+      if (!response.ok) {
+        throw new Error("Failed to submit data to the DB");
+      }
     } catch (error) {
-      console.error("Error adding product: ", error);
-      alert("Failed to add product");
+      console.error("Error submitting data: ", error);
+      alert("Failed to add product.");
     }
   }
 
@@ -106,36 +66,7 @@ export function AddItems() {
               required
             />
           </div>
-          <div className="product-form-group">
-            <label className="product-form-label">Category:</label>
-            <input
-              type="text"
-              className="product-form-input"
-              value={category}
-              onChange={(e) => setCategory(e.target.value)}
-              required
-            />
-          </div>
-          <div className="product-form-group">
-            <label className="product-form-label">Sub Category:</label>
-            <input
-              type="text"
-              className="product-form-input"
-              value={subCat}
-              onChange={(e) => setSubCat(e.target.value)}
-              required
-            />
-          </div>
-          <div className="product-form-group">
-            <label className="product-form-label">Quantity of Product:</label>
-            <input
-              type="number"
-              className="product-form-input"
-              value={quant}
-              onChange={(e) => setQuant(e.target.value)}
-              required
-            />
-          </div>
+
           <div className="product-form-group">
             <label className="product-form-label">Price:</label>
             <input
@@ -175,7 +106,7 @@ export function AddItems() {
               {images.map((image, index) => (
                 <img
                   key={index}
-                  src={URL.createObjectURL(image)}
+                  src={image}
                   alt={`preview-${index}`}
                   className="product-form-image"
                 />
