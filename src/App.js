@@ -19,6 +19,7 @@ function App() {
   return (
     <Router>
       <Navbar user={user} />
+      {console.log(user)}
       <Routes>
         <Route path="/" element={<Content />} />
         <Route path="/allItems" element={<AllItems />} />
