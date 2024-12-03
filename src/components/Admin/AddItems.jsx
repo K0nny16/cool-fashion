@@ -2,48 +2,61 @@ import { useEffect, useState } from "react";
 import "../../css/addItems.css";
 import { collection, addDoc } from "firebase/firestore";
 import { firestoreDB } from "../../firebase";
-import imageCompression from "browser-image-compression";
-
+import { dbRealTime, ref, get } from "../../firebase";
 
 export function AddItems() {
   const [productName, setProductName] = useState("");
   const [price, setPrice] = useState("");
   const [dateAdded, setDateAdded] = useState("");
-  const [images, setImages] = useState("");
+  const [images, setImages] = useState([]);
   const [category, setCategory] = useState("");
-  const [subCat, setSubCat] = useState("");
   const [quant, setQuant] = useState("");
+  const [categories, setCategories] = useState({});
+  const [subCategories, setSubCategories] = useState([]);  
+  const [subCat, setSubCat] = useState(""); // Korrekt state
 
   function handleImageUpload(event) {
-    const files = Array.from(event.target.files).slice(0,3);
-    if (files.length > 3) {
-      alert("You can only upload up to 3 images. The first 3 images have been selected.");
+    const value = event.target.value.trim();
+    if (value) {
+      setImages((prevImages) => {
+        if (prevImages.length < 5) {
+          return [...prevImages, value];
+        } else {
+          alert("You can only add up to 5 images.");
+          return prevImages;
+        }
+      });
+      event.target.value = ""; // Rensa inputfältet
     }
-    setImages(files);
   }
 
-  async function compressAndConvertToBase64(files) {
-    const options = {
-      maxSizeMB: 0.33, // Maxstorlek för varje bild i MB
-      maxWidthOrHeight: 1024, // Maxbredd eller höjd i pixlar
-      useWebWorker: true, // För snabbare komprimering
-    };
-  
-    const base64Strings = await Promise.all(
-      files.map(async (file) => {
-        const compressedFile = await imageCompression(file, options);
-        return new Promise((resolve, reject) => {
-          const reader = new FileReader();
-          reader.onloadend = () => resolve(reader.result);
-          reader.onerror = reject;
-          reader.readAsDataURL(compressedFile);
-        });
-      })
-    );
-  
-    return base64Strings;
+  function handleCategoryChange(e) {
+    const selectedCategory = e.target.value;
+    setCategory(selectedCategory);
+    if (categories[selectedCategory]) {
+      setSubCategories(Object.keys(categories[selectedCategory])); // Sätt underkategorier
+    } else {
+      setSubCategories([]); // Töm om inga underkategorier finns
+    }
+    setSubCat(""); // Återställ vald underkategori korrekt
   }
-  
+
+  useEffect(() => {
+    async function fetchCategories() {
+      try {
+        const shopRef = ref(dbRealTime, "nav/Shop"); // Referens till rätt del i databasen
+        const snapshot = await get(shopRef);
+        if (snapshot.exists()) {
+          setCategories(snapshot.val()); // Sparar kategoridata
+        } else {
+          console.log("No data available");
+        }
+      } catch (error) {
+        console.error("Error fetching categories:", error);
+      }
+    }
+    fetchCategories();
+  }, []);
 
   useEffect(() => {
     const today = new Date();
@@ -59,29 +72,27 @@ export function AddItems() {
       dateAdded,
       images,
       category,
-      subCat,
+      subCat, // Korrekt state används här
       quant,
     };
     console.log("Product Data: ", productData);
     submitToDB(productData);
   }
+
   async function submitToDB(data) {
     try {
-      // Komprimera och konvertera bilder till Base64
-      const base64Images = await compressAndConvertToBase64(data.images);
-  
       const productData = {
         productName: data.productName,
         price: parseFloat(data.price),
         dateAdded: data.dateAdded,
-        images: base64Images,
+        images: data.images,
         category: data.category,
         subCat: data.subCat,
         quant: parseInt(data.quant, 10),
       };
-  
+
       const docRef = await addDoc(collection(firestoreDB, "Products"), productData);
-  
+
       console.log("Product added! ", docRef.id);
       alert("Product added successfully!");
     } catch (error) {
@@ -95,7 +106,6 @@ export function AddItems() {
       <div className="product-form-container">
         <form className="product-form" onSubmit={handleSubmit}>
           <h2>Add a New Product</h2>
-
           <div className="product-form-group">
             <label className="product-form-label">Product Name:</label>
             <input
@@ -108,23 +118,36 @@ export function AddItems() {
           </div>
           <div className="product-form-group">
             <label className="product-form-label">Category:</label>
-            <input
-              type="text"
+            <select
               className="product-form-input"
               value={category}
-              onChange={(e) => setCategory(e.target.value)}
+              onChange={handleCategoryChange}
               required
-            />
+            >
+              <option value="">Select a category</option>
+              {Object.keys(categories).map((cat) => (
+                <option key={cat} value={cat}>
+                  {cat}
+                </option>
+              ))}
+            </select>
           </div>
           <div className="product-form-group">
             <label className="product-form-label">Sub Category:</label>
-            <input
-              type="text"
+            <select
               className="product-form-input"
-              value={subCat}
-              onChange={(e) => setSubCat(e.target.value)}
+              value={subCat} // Korrekt state
+              onChange={(e) => setSubCat(e.target.value)} // Korrekt state
               required
-            />
+              disabled={!subCategories.length}
+            >
+              <option value="">Select a sub category</option>
+              {subCategories.map((subCat) => (
+                <option key={subCat} value={subCat}>
+                  {subCat}
+                </option>
+              ))}
+            </select>
           </div>
           <div className="product-form-group">
             <label className="product-form-label">Quantity of Product:</label>
@@ -146,7 +169,6 @@ export function AddItems() {
               required
             />
           </div>
-
           <div className="product-form-group">
             <label className="product-form-label">Date Added:</label>
             <input
@@ -157,32 +179,27 @@ export function AddItems() {
               required
             />
           </div>
-
           <div className="product-form-group">
             <label className="product-form-label">Upload Images:</label>
-            <input
-              type="file"
-              className="product-form-input-file"
-              multiple
-              accept="image/*"
-              onChange={handleImageUpload}
-            />
-          </div>
-
-          {images.length > 0 && (
-            <div>
-              <h3 className="product-form-preview-title">Image Previews:</h3>
-              {images.map((image, index) => (
-                <img
-                  key={index}
-                  src={URL.createObjectURL(image)}
-                  alt={`preview-${index}`}
-                  className="product-form-image"
-                />
-              ))}
+            <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
+              <input
+                id="image-link-input"
+                type="text"
+                className="product-form-input-file"
+                placeholder="Enter image URL"
+              />
+              <button
+                type="button"
+                className="add-image-button"
+                onClick={(e) => {
+                  const input = document.getElementById("image-link-input");
+                  handleImageUpload({ target: input });
+                }}
+              >
+                Add Image
+              </button>
             </div>
-          )}
-
+          </div>
           <button type="submit" className="product-form-button">
             Submit
           </button>
