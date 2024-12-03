@@ -5,7 +5,7 @@ import { fetchMenuData } from "../nav";
 
 const logo = "/assets/cool-fashion-logo.PNG";
 
-export function Navbar(userState){
+export function Navbar({userState}){
     const [openDropdown, setOpenDropdown] = useState(null);
     const [menuItems, setMenuItems] = useState([]);
     const navigate = useNavigate();
@@ -25,10 +25,9 @@ export function Navbar(userState){
     
     useEffect(() => {
       const fetchData = async () => {
-        const menu = await fetchMenuData(useState);
+        const menu = await fetchMenuData(userState);
         setMenuItems(menu);
       };
-  
       fetchData();
     },[userState]);
 

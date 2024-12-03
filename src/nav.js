@@ -36,7 +36,7 @@ export async function fetchMenuData(adminState) {
     });
 
     // Add admin menu if adminState is true
-    if (adminState.role === "admin") {
+    if (adminState?.role === "admin") {
       menuItems.push({
         name: "Admin",
         dropdown: [
