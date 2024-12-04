@@ -1,5 +1,6 @@
 import { items } from "../../items.js";
 import React, { useState } from "react";
+import { ProductsProvider } from "../productprovider.jsx";
 
 export function AllItems() {
   const flattenItems = (items) => {

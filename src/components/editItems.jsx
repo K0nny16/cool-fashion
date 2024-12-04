@@ -51,35 +51,47 @@ export function EditItems() {
   };
 
   return (
-    <div>
-      <h1>All Items</h1>
-      {Object.keys(data).map((category) => (
-        <div key={category}>
-          <h2>{category}</h2>
-          {Object.keys(data[category]).map((subcategory) => (
-            <div key={subcategory}>
-              <h3>{subcategory}</h3>
-              <div className="contentList">
-                {data[category][subcategory].map((item) => (
-                  <ContentCardForEditing
-                    key={item.id}
-                    image={item.img}
-                    title={item.name}
-                    price={item.pris}
-                    onNameChange={(value) =>
-                      updateItem(category, subcategory, item.id, "name", value)
-                    }
-                    onPriceChange={(value) =>
-                      updateItem(category, subcategory, item.id, "pris", value)
-                    }
-                    onSave={() => handleItemClick(item)}
-                  />
-                ))}
+      <div>
+        <h1>All Items</h1>
+        {Object.keys(data).map((category) => (
+          <div key={category}>
+            <h2>{category}</h2>
+            {Object.keys(data[category]).map((subcategory) => (
+              <div key={subcategory}>
+                <h3>{subcategory}</h3>
+                <div className="contentList">
+                  {data[category][subcategory].map((item) => (
+                    <ContentCardForEditing
+                      key={item.id}
+                      image={item.img}
+                      title={item.name}
+                      price={item.pris}
+                      onNameChange={(value) =>
+                        updateItem(
+                          category,
+                          subcategory,
+                          item.id,
+                          "name",
+                          value
+                        )
+                      }
+                      onPriceChange={(value) =>
+                        updateItem(
+                          category,
+                          subcategory,
+                          item.id,
+                          "pris",
+                          value
+                        )
+                      }
+                      onSave={() => handleItemClick(item)}
+                    />
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
-      ))}
-    </div>
+            ))}
+          </div>
+        ))}
+      </div>
   );
 }

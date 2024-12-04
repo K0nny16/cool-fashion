@@ -1,17 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Happy+Monkey&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Happy+Monkey&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
 root,
 root.MOODSBORD1 {
-
-    --color1: #FF69B4;
-    --color2: #008080;
-    --color3: #556B2F;
-    --color4: #D2B48C;
-    --color5: #B57EDC;
-    --color6: #000000;
-    --color7: #FF4500;
-    --family-font: "Josefin Sans", sans-serif;
+  --color1: #ff69b4;
+  --color2: #008080;
+  --color3: #556b2f;
+  --color4: #d2b48c;
+  --color5: #b57edc;
+  --color6: #000000;
+  --color7: #ff4500;
+  --family-font: "Josefin Sans", sans-serif;
 }
 /*
 
@@ -41,49 +39,49 @@ root.MOODSBORD3 {
 */
 
 body {
-    font-family: var(--family-font, sans-serif), serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f5f5f5;
+  font-family: var(--family-font, sans-serif), serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5;
 }
 
 .App-header {
-    background-color: var(--color1, #000);
-    color: var(--color6, #fff);
-    padding: 20px;
-    text-align: center;
+  background-color: var(--color1, #000);
+  color: var(--color6, #fff);
+  padding: 20px;
+  text-align: center;
 }
 
 .content {
-    padding-top: 0px;
-    padding-bottom: 20px;
-    max-width: 100%;
-    margin: 0 auto;
+  padding-top: 0px;
+  padding-bottom: 20px;
+  max-width: 100%;
+  margin: 0 auto;
 }
 
-.content-category-img{
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* Delar skärmen i två lika stora kolumner */
-    grid-template-rows: 1fr; /* En rad */
-    height: 100vh; /* Hela skärmhöjden */
-    gap: 0; /* Ingen mellanrum mellan bilder */
-    overflow: hidden; /* Förhindrar bilder från att gå utanför */
-    object-fit: cover;
+.content-category-img {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Delar skärmen i två lika stora kolumner */
+  grid-template-rows: 1fr; /* En rad */
+  height: 100vh; /* Hela skärmhöjden */
+  gap: 0; /* Ingen mellanrum mellan bilder */
+  overflow: hidden; /* Förhindrar bilder från att gå utanför */
+  object-fit: cover;
 }
 
 .content-category-img > img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Gör att bilder täcker sin ruta utan att bli deformerade */
-  }
-  
-  .content-category-vertical-img {
-    display: grid;
-    grid-template-rows: 1fr 1fr; /* Dela högerkolumnen i två lika stora rutor */
-    grid-template-columns: 1fr; /* En kolumn */
-    height: 100%;
-  }
-  
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Gör att bilder täcker sin ruta utan att bli deformerade */
+}
+
+.content-category-vertical-img {
+  display: grid;
+  grid-template-rows: 1fr 1fr; /* Dela högerkolumnen i två lika stora rutor */
+  grid-template-columns: 1fr; /* En kolumn */
+  height: 100%;
+}
+
 .content-category-vertical-img > img {
   width: 100%;
   height: 100%;
@@ -96,50 +94,49 @@ body {
 }
 
 .content-category-vertical-img > img:hover {
-    transform: scale(1.03); /* Förstorar bilden med 3 % */
-    cursor: pointer; /* Ändrar muspekaren till en hand */
-  }
+  transform: scale(1.03); /* Förstorar bilden med 3 % */
+  cursor: pointer; /* Ändrar muspekaren till en hand */
+}
 
 .content-landing-img img {
-
-    width: 100%;
-    border-radius: 10px;
+  width: 100%;
+  border-radius: 10px;
 }
 
 .content-cards {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
 }
 
 .content-card {
-    background-color: var(--color4, #fff);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 15px;
-    text-align: center;
-    max-width: 250px;
+  background-color: var(--color4, #fff);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  text-align: center;
+  max-width: 250px;
 }
 
-.content-card:hover{
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 30px 40px 0 rgba(0, 0, 0, 0.50);
-    transition: box-shadow 0.3s ease-in-out;
-    transform: scale(1.02);
-    /*cursor: pointer;*/
-  }
+.content-card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 30px 40px 0 rgba(0, 0, 0, 0.5);
+  transition: box-shadow 0.3s ease-in-out;
+  transform: scale(1.02);
+  /*cursor: pointer;*/
+}
 
 .content-card-image {
-    width: 150px;
-    height: 150px;
-    object-fit: cover ;
-    max-width: 100%;
-    border-radius: 10px;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  max-width: 100%;
+  border-radius: 10px;
 }
 
 .content-card-title {
-    font-size: 18px;
-    font-weight: bold;
-    margin: 10px 0;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 10px 0;
 }
 
 .content-card-quant {
@@ -150,38 +147,62 @@ body {
 }
 
 .content-card-price {
-    font-size: 16px;
-    color: var(--color5);
+  font-size: 16px;
+  color: var(--color5);
 }
 
 .content-card-button {
-    background-color: var(--color1, #000);
-    color: var(--color6, #fff);
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    margin-top: 10px;
+  background-color: var(--color1, #000);
+  color: var(--color6, #fff);
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
 }
 
 .content-card-button:hover {
-    background-color: var(--color2, #555);
+  background-color: var(--color2, #555);
 }
 
 .news-title {
-    font-size: 24px;
-    font-weight: bold;
-    text-align: center;  /* Justera rubriken i mitten */
-    margin-bottom: 20px;  /* Ge lite avstånd under rubriken */
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center; /* Justera rubriken i mitten */
+  margin-bottom: 20px; /* Ge lite avstånd under rubriken */
 }
 
 .black-friday-banner {
-    background-color: red;
-    color: white;
-    text-align: center;
-    padding: 20px 0;
-    font-size: 24px;
-    font-weight: bold;
-    letter-spacing: 2px;
-    text-shadow: 2px 2px 5px black;
-  }
+  background-color: red;
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 24px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 5px black;
+}
+
+.image-thumbnails {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.thumbnail {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  cursor: pointer;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.thumbnail:hover {
+  transform: scale(1.1);
+}
+
+.thumbnail.active {
+  border-color: #007bff;
+}

@@ -35,20 +35,20 @@ export function AddCategory() {
   };
 
   return (
-    <div className="addCategory-page">
-      <h1>Hantera Kategorier</h1>
+      <div className="addCategory-page">
+        <h1>Hantera Kategorier</h1>
 
-      <form onSubmit={handeAddCategory} className="category-form">
-        <label>
-          Välj kön:
-          <select
-            value={selectedGender}
-            onChange={(e) => setSelectedGender(e.target.value)}
-          >
-            <option value="Man">Man</option>
-            <option value="Dam">Dam</option>
-          </select>
-        </label>
+        <form onSubmit={handeAddCategory} className="category-form">
+          <label>
+            Välj kön:
+            <select
+              value={selectedGender}
+              onChange={(e) => setSelectedGender(e.target.value)}
+            >
+              <option value="Man">Man</option>
+              <option value="Dam">Dam</option>
+            </select>
+          </label>
 
         <label>
           Lägg till kategori:
