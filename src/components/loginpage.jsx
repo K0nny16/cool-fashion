@@ -7,10 +7,12 @@ import {
 import { ref, set, get } from "firebase/database";
 import "../css/loginpage.css";
 import { dbRealTime } from "../firebase";
+import { useNavigate } from "react-router-dom";
 
 export function LoginPage({ setUser }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const auth = getAuth();
 
@@ -28,6 +30,7 @@ export function LoginPage({ setUser }) {
         setUser({ email: user.email, role });
 
         alert(`Logged in as: ${user.email} with role: ${role}`);
+        navigate("/")
       } else {
         alert("Role not found!");
       }

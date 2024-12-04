@@ -3,9 +3,9 @@ import "../css/nav.css"
 import { useNavigate } from "react-router-dom";
 import { fetchMenuData } from "../nav";
 
-const logo = "/assets/cool-fashion-logo.PNG";
+const logo = "/assets/cool-fashion-logo2.PNG";
 
-export function Navbar(userState){
+export function Navbar({userState}){
     const [openDropdown, setOpenDropdown] = useState(null);
     const [menuItems, setMenuItems] = useState([]);
     const navigate = useNavigate();
@@ -25,10 +25,9 @@ export function Navbar(userState){
     
     useEffect(() => {
       const fetchData = async () => {
-        const menu = await fetchMenuData(useState);
+        const menu = await fetchMenuData(userState);
         setMenuItems(menu);
       };
-  
       fetchData();
     },[userState]);
 

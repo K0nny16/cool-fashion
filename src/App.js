@@ -18,7 +18,7 @@ function App() {
 
   return (
     <Router>
-      <Navbar user={user} />
+      <Navbar userState={user} />
       {console.log(user)}
       <Routes>
         <Route path="/" element={<Content />} />
