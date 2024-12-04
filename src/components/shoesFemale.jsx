@@ -1,12 +1,18 @@
-import { items } from "../items";
-import { ContentCard } from "./content";
-import "../css/shoes.css";
+import React from "react";
+import { useProducts } from "../components/productprovider";
 import femaleShoesMp4 from "../assets/Femaleshoes.mp4";
-
-const landingImage = "/assets/damskor.PNG";
+import { ContentCard } from "./content";
 
 export function ShoesFemale() {
-  const femaleShoes = items.flatMap((itemGroup) => itemGroup.Dam?.Skor || []);
+  const { products, loading } = useProducts();
+
+  if (loading) {
+    return <p>Loading products...</p>;
+  }
+
+  const femaleShoes = products.filter(
+    (product) => product.category === "Dam" && product.subCat === "Skor"
+  );
 
   return (
     <div className="dam-skor">
@@ -19,17 +25,11 @@ export function ShoesFemale() {
         muted
         playsInline
       />
-
       <div className="content-cards">
         {femaleShoes.map((shoe) => (
           <ContentCard
             key={shoe.id}
-            image={shoe.img}
-            title={shoe.name}
-            price={`${shoe.pris} kr`}
-            buttonText="Köp"
-            seller="Damsko"
-            onButtonClick={() => alert(`Du klickade på ${shoe.name}`)}
+            product={shoe} // Pass the individual shoe to ContentCard
           />
         ))}
       </div>

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../../css/addCategory.css";
+import { ProductsProvider } from "../productprovider";
 
 // Ersätta useState med API-anrop när vi integrerar databas?
 export function AddCategory() {
@@ -28,52 +29,52 @@ export function AddCategory() {
   };
 
   return (
-    <div className="addCategory-page">
-      <h1>Hantera Kategorier</h1>
+      <div className="addCategory-page">
+        <h1>Hantera Kategorier</h1>
 
-      <form onSubmit={handeAddCategory} className="category-form">
-        <label>
-          Välj kön:
-          <select
-            value={selectedGender}
-            onChange={(e) => setSelectedGender(e.target.value)}
-          >
-            <option value="Man">Man</option>
-            <option value="Dam">Dam</option>
-          </select>
-        </label>
+        <form onSubmit={handeAddCategory} className="category-form">
+          <label>
+            Välj kön:
+            <select
+              value={selectedGender}
+              onChange={(e) => setSelectedGender(e.target.value)}
+            >
+              <option value="Man">Man</option>
+              <option value="Dam">Dam</option>
+            </select>
+          </label>
 
-        <label>
-          Lägg till kategori:
-          <input
-            type="text"
-            value={category}
-            onChange={(e) => setCategory(e.target.value)}
-            placeholder="Skriv kategori här"
-          />
-        </label>
-        <button type="submit">Lägg till</button>
-      </form>
+          <label>
+            Lägg till kategori:
+            <input
+              type="text"
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+              placeholder="Skriv kategori här"
+            />
+          </label>
+          <button type="submit">Lägg till</button>
+        </form>
 
-      <div className="categories-list">
-        <h2>Kategorier:</h2>
-        <div>
-          <h3>Man</h3>
-          <ul>
-            {categories.Man.map((cat, index) => (
-              <li key={index}>{cat}</li>
-            ))}
-          </ul>
-        </div>
-        <div>
-          <h3>Dam</h3>
-          <ul>
-            {categories.Dam.map((cat, index) => (
-              <li key={index}>{cat}</li>
-            ))}
-          </ul>
+        <div className="categories-list">
+          <h2>Kategorier:</h2>
+          <div>
+            <h3>Man</h3>
+            <ul>
+              {categories.Man.map((cat, index) => (
+                <li key={index}>{cat}</li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h3>Dam</h3>
+            <ul>
+              {categories.Dam.map((cat, index) => (
+                <li key={index}>{cat}</li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
   );
 }

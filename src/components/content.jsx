@@ -1,115 +1,64 @@
+import React from "react";
+import { useProducts } from "../components/productprovider";
 import "../css/content.css";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
-const herrskor = "/assets/herrskor.PNG";
-const damskor = "/assets/damskor.PNG";
-const accessoarer = "/assets/accessoarer.PNG";
+export function Content() {
+  const { products, loading } = useProducts();
 
-// Komponent för content kortet
-export function ContentCard({
-  image,
-  title,
-  price,
-  buttonText,
-  onButtonClick,
-  description,
-  seller,
-}) {
+  if (loading) {
+    return <p>Loading products...</p>; 
+  }
+
   return (
-    <div className="content-card">
-      <img src={image} alt={title} className="content-card-image" />
-      <h3 className="content-card-title">{title}</h3>
-      <p className="content-card-price">{price}</p>
-      <p className="content-card-seller">{seller}</p>
-      <p className="content-card-description">{description}</p>
-      <button className="content-card-button" onClick={onButtonClick}>
-        {buttonText}
-      </button>
+    <div>
+      <h1>Welcome to the Homepage!</h1>
+      <div className="content-cards">
+        {products.map((product) => (
+          <ContentCard key={product.id} product={product} />
+        ))}
+      </div>
     </div>
   );
 }
 
-export function Content() {
-  const navigate = useNavigate();
+export function ContentCard({ product }) {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  const handleNavigate = (path) => {
-    navigate(path);
-  };
+  if (!product) {
+    return null;
+  }
 
-  const cards = [
-    {
-      id: 1,
-      image: "/assets/Product1.webp",
-      title: "Product 1",
-      price: 100,
-      buttonText: "Buy",
-    },
-    {
-      id: 2,
-      image: "/assets/Product2.jpeg",
-      title: "Product 2",
-      price: 100,
-      buttonText: "Buy",
-    },
-    {
-      id: 3,
-      image: "/assets/Product3.png",
-      title: "Product 3",
-      price: 100,
-      buttonText: "Buy",
-    },
-    {
-      id: 4,
-      image: "/assets/Product4.png",
-      title: "Product 4",
-      price: 100,
-      buttonText: "Buy",
-    },
-  ];
+  const images = product.images || [];
+  const currentImage =
+    images[currentImageIndex] || "https://via.placeholder.com/150";
 
   return (
-    <div className="content">
-      <div className="black-friday-banner">
-        BLACK FRIDAY
-      </div>
-      <div className="content-category-img">
-        {/* Herrskor */}
+    <div className="content-card">
+      <div className="image-carousel">
         <img
-          src={herrskor}
-          alt="herrskor"
-          className="clickable-image"
-          onClick={() => handleNavigate("/maleShoes")}
+          src={currentImage}
+          alt={`${product.productName} - Image`}
+          className="content-card-image"
         />
-        <div className="content-category-vertical-img">
-          {/* Damskor */}
-          <img
-            src={damskor}
-            alt="damskor"
-            className="clickable-image"
-            onClick={() => handleNavigate("/shoesFemale")}
-          />
-          {/* Accessoarer */}
-          <img
-            src={accessoarer}
-            alt="accessoarer"
-            className="clickable-image"
-            onClick={() => handleNavigate("/accessoriesMale")}
-          />
-        </div>
       </div>
-      <h2 className="news-title">NYHETER</h2>
-      <div className="content-cards">
-        {cards.map((card) => (
-          <ContentCard
-            key={card.id}
-            image={card.image}
-            title={card.title}
-            price={card.price}
-            buttonText={card.buttonText}
-            onButtonClick={() => alert(`${card.title} köpt!`)}
+
+      <div className="image-thumbnails">
+        {images.map((image, index) => (
+          <img
+            key={`${product.id}-thumb-${index}`}
+            src={image}
+            alt={`Thumbnail ${index + 1}`}
+            className={`thumbnail ${
+              currentImageIndex === index ? "active" : ""
+            }`}
+            onClick={() => setCurrentImageIndex(index)}
           />
         ))}
       </div>
+
+      <h3>{product.productName}</h3>
+      <p>{`Price: $${product.price}`}</p>
     </div>
   );
 }

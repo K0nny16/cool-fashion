@@ -1,34 +1,38 @@
 import React from "react";
-import { items } from "../items.js";
-import { ContentCard } from "./content.jsx";
-import "../css/shoes.css";
+import { useProducts } from "../components/productprovider";
 import maleshoesmp4 from "../assets/Maleshoes.mp4";
+import { ContentCard } from "./content";
 
 export function MaleShoes() {
-  const maleShoes = items.flatMap((itemGroup) => itemGroup.Herr?.Skor || []);
+  const { products, loading } = useProducts();
+
+  if (loading) {
+    return <p>Loading products...</p>;
+  }
+
+  // Filter products for "Man" category and "Skor" sub-category
+  const maleShoes = products.filter(
+    (product) => product.category === "Man" && product.subCat === "Skor"
+  );
+
+  console.log("Filtered Male Shoes:", maleShoes); // Debug log
 
   return (
     <div className="shoes-page">
       <video
         className="video"
         src={maleshoesmp4}
-        alt="Resales video"
+        alt="Male shoes Video"
         autoPlay
         loop
         muted
         playsInline
       />
-
-      <div className="product-list">
+      <div className="content-cards">
         {maleShoes.map((shoe) => (
           <ContentCard
-            key={maleShoes.id}
-            image={shoe.img}
-            title={shoe.name}
-            price={`${shoe.pris} kr`}
-            buttonText="Köp"
-            seller="Herrsko"
-            onButtonClick={() => alert(`Du klickade på ${shoe.name}`)}
+            key={shoe.id}
+            product={shoe} // Pass the individual shoe to ContentCard
           />
         ))}
       </div>

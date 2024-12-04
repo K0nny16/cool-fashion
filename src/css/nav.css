@@ -16,6 +16,7 @@ body {
   padding: 1rem 1rem; /* Öka padding för mer luft */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
   overflow: visible;
+  list-style-type: none;
 }
 
 .navbar-menu {
@@ -91,7 +92,9 @@ body {
   width: auto;
 }
 
-.navbar-left, .navbar-center, .navbar-right {
+.navbar-left,
+.navbar-center,
+.navbar-right {
   display: flex;
   align-items: center; /* Vertikal centrering */
 }
