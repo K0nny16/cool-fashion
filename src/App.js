@@ -12,6 +12,7 @@ import { EditItems } from "./components/editItems";
 import { AddItems } from "./components/Admin/AddItems";
 import { LoginPage } from "./components/loginpage";
 import { useState } from "react";
+import { Tickets } from "./components/Admin/tickets";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -19,7 +20,6 @@ function App() {
   return (
     <Router>
       <Navbar userState={user} />
-      {console.log(user)}
       <Routes>
         <Route path="/" element={<Content />} />
         <Route path="/allItems" element={<AllItems />} />
@@ -32,6 +32,7 @@ function App() {
         <Route path="/editItem" element={<EditItems />} />
         <Route path="/addItems" element={<AddItems />} />
         <Route path="/loginPage" element={<LoginPage setUser={setUser} />} />
+        <Route path="/tickets" element={<Tickets/>}/>
         {/* Lägg till nya routes här för nyhter, dam skor, herr skor, osv*/}
       </Routes>
       <Footer />
