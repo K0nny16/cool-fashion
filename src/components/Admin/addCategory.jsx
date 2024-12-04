@@ -1,13 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../../css/addCategory.css";
+import { ref, set, push, onValue, update } from "firebase/database";
+import { dbRealTime } from "../../firebase";
 
-// Ersätta useState med API-anrop när vi integrerar databas?
 export function AddCategory() {
   const [selectedGender, setSelectedGender] = useState("Man");
   const [category, setCategory] = useState("");
-  const [categories, setCategories] = useState({ Man: [], Dam: [] });
 
-  const handeAddCategory = (e) => {
+
+  const handeAddCategory = async (e) => {
     e.preventDefault();
 
     if (category.trim() === "") {
@@ -15,16 +16,22 @@ export function AddCategory() {
       return;
     }
 
-    console.log("Before update:", categories);
-    console.log("Selected gender:", selectedGender);
-    console.log("Category to add:", category.trim());
+    try {
+      const categoryPath = `nav/Shop/${selectedGender}`;
+      const categoryRef = ref(dbRealTime, categoryPath);
 
-    setCategories((prev) => ({
-      ...prev,
-      [selectedGender]: [...prev[selectedGender], category.trim()],
-    }));
+      const newCategoryData = {
+        [category.trim()]: category.trim(),
+      };
 
-    setCategory("");
+      await update(categoryRef, newCategoryData);
+
+      alert(`Kategorin "${category.trim()}" har lagts till under ${selectedGender}!`);
+      setCategory("");
+    } catch (error) {
+      console.error("Kunde inte lägga tlil kategori: ", error);
+      alert("Ett fel uppstod vid tillägg av kategori!");
+    }
   };
 
   return (
@@ -54,26 +61,6 @@ export function AddCategory() {
         </label>
         <button type="submit">Lägg till</button>
       </form>
-
-      <div className="categories-list">
-        <h2>Kategorier:</h2>
-        <div>
-          <h3>Man</h3>
-          <ul>
-            {categories.Man.map((cat, index) => (
-              <li key={index}>{cat}</li>
-            ))}
-          </ul>
-        </div>
-        <div>
-          <h3>Dam</h3>
-          <ul>
-            {categories.Dam.map((cat, index) => (
-              <li key={index}>{cat}</li>
-            ))}
-          </ul>
-        </div>
-      </div>
     </div>
   );
 }
