@@ -1,11 +1,13 @@
-import React,{useState} from "react"
+import React,{useState, useEffect} from "react"
 import "../css/nav.css"
 import { useNavigate } from "react-router-dom";
+import { fetchMenuData } from "../nav";
 
-const logo = "/assets/cool-fashion-logo.PNG";
+const logo = "/assets/cool-fashion-logo2.PNG";
 
-export function Navbar(){
+export function Navbar({userState}){
     const [openDropdown, setOpenDropdown] = useState(null);
+    const [menuItems, setMenuItems] = useState([]);
     const navigate = useNavigate();
     //Placeholder funktion för logiken med vad man klickar på.
     function handleItemClick(parentCategory,itemName){
@@ -20,18 +22,15 @@ export function Navbar(){
         if(itemName === "Lägg till Produkter") navigate("/addItems")
         if(itemName === "Login") navigate("/loginpage")
     }
-    //Struktur för hur menyn kommer att vara utformad.
-    const menuItems = [
-        {name:"Shop",dropdown:["Nyheter",
-            {name:"Dam",content:["Skor","Kläder","Accessoarer"]},
-            {name:"Man",content:["Skor","Kläder","Accessoarer"]},
-        ]},
-        {name:"About us",dropdown:["Contact us","Where to find us"]},
-        {name:"Cart",dropdown:["Checkout","Returns"]},
-        {name:"Resale"},
-        {name:"Admin",dropdown:["Redigera Produkter","Lägg till Produkter","Skapa Kategori","Se Alla Produkter"]},
-    ]
     
+    useEffect(() => {
+      const fetchData = async () => {
+        const menu = await fetchMenuData(userState);
+        setMenuItems(menu);
+      };
+      fetchData();
+    },[userState]);
+
     return (
         <nav className="navbar">
           <div className="navbar-left">
@@ -100,7 +99,7 @@ export function Navbar(){
             </div>
             <div className="navbar-right">
               <li className="navbar-item">
-                <span>Login</span>
+                <span onClick={() => navigate("/loginPage")} >Login</span>
               </li>
               <li className="navbar-item search-bar">
                 <input type="text" placeholder="Search..." />
