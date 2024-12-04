@@ -10,11 +10,16 @@ import { ShoesFemale } from "./components/shoesFemale";
 import { AddCategory } from "./components/Admin/addCategory";
 import { EditItems } from "./components/editItems";
 import { AddItems } from "./components/Admin/AddItems";
+import { LoginPage } from "./components/loginpage";
+import { useState } from "react";
 
 function App() {
+  const [user, setUser] = useState(null);
+
   return (
     <Router>
-      <Navbar />
+      <Navbar userState={user} />
+      {console.log(user)}
       <Routes>
         <Route path="/" element={<Content />} />
         <Route path="/allItems" element={<AllItems />} />
@@ -25,7 +30,8 @@ function App() {
         <Route path="/accessoriesMale" element={<Accessories />} />
         <Route path="/shoesFemale" element={<ShoesFemale />} />
         <Route path="/editItem" element={<EditItems />} />
-        <Route path="/addItems" element={<AddItems/>}/>
+        <Route path="/addItems" element={<AddItems />} />
+        <Route path="/loginPage" element={<LoginPage setUser={setUser} />} />
         {/* Lägg till nya routes här för nyhter, dam skor, herr skor, osv*/}
       </Routes>
       <Footer />

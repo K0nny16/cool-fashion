@@ -108,8 +108,8 @@ export function AddItems() {
       console.log("Product added! ", docRef.id);
       alert("Product added successfully!");
     } catch (error) {
-      console.error("Error adding product: ", error);
-      alert("Failed to add product");
+      console.error("Error submitting data: ", error);
+      alert("Failed to add product.");
     }
   }
 
