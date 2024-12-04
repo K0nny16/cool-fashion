@@ -2,6 +2,7 @@ import React from "react";
 import { useProducts } from "../components/productprovider";
 import "../css/content.css";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export function Content() {
   const { products, loading } = useProducts();
@@ -24,6 +25,7 @@ export function Content() {
 
 export function ContentCard({ product }) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const navigate = useNavigate();
 
   if (!product) {
     return null;
@@ -34,7 +36,11 @@ export function ContentCard({ product }) {
     images[currentImageIndex] || "https://via.placeholder.com/150";
 
   return (
-    <div className="content-card">
+    <div 
+    className="content-card"
+    onClick={() => navigate(`/product/${product.id}`)}
+    style={{ cursor: "pointer" }} 
+    >
       <div className="image-carousel">
         <img
           src={currentImage}
@@ -52,7 +58,10 @@ export function ContentCard({ product }) {
             className={`thumbnail ${
               currentImageIndex === index ? "active" : ""
             }`}
-            onClick={() => setCurrentImageIndex(index)}
+            onClick={(event) => {
+              event.stopPropagation();
+              setCurrentImageIndex(index);
+            }}
           />
         ))}
       </div>
