@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { resaleItems } from "../resaleItems"; // Import hardcoded data
+import { resaleItems } from "../resaleItems"; 
 import "../css/resale.css";
 import resalesMp4 from "../assets/Resales.mp4";
 
@@ -31,7 +31,7 @@ export function ContentCard({ product }) {
     return null;
   }
 
-  const images = Array.isArray(product.image) ? product.image : [product.image]; // Handle single or multiple images
+  const images = Array.isArray(product.image) ? product.image : [product.image]; 
   const currentImage =
     images[currentImageIndex] || "https://via.placeholder.com/150";
 

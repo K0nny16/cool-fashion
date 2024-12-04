@@ -29,7 +29,7 @@ export function ShoesFemale() {
         {femaleShoes.map((shoe) => (
           <ContentCard
             key={shoe.id}
-            product={shoe} // Pass the individual shoe to ContentCard
+            product={shoe} 
           />
         ))}
       </div>

@@ -10,12 +10,11 @@ export function MaleShoes() {
     return <p>Loading products...</p>;
   }
 
-  // Filter products for "Man" category and "Skor" sub-category
   const maleShoes = products.filter(
     (product) => product.category === "Man" && product.subCat === "Skor"
   );
 
-  console.log("Filtered Male Shoes:", maleShoes); // Debug log
+  console.log("Filtered Male Shoes:", maleShoes);
 
   return (
     <div className="shoes-page">
@@ -32,7 +31,7 @@ export function MaleShoes() {
         {maleShoes.map((shoe) => (
           <ContentCard
             key={shoe.id}
-            product={shoe} // Pass the individual shoe to ContentCard
+            product={shoe} 
           />
         ))}
       </div>

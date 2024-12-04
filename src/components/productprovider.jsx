@@ -27,7 +27,7 @@ export const ProductsProvider = ({ children }) => {
     }
 
     fetchProducts();
-  }, []); // Empty dependency array ensures fetch runs once
+  }, []);
 
   return (
     <ProductsContext.Provider value={{ products, loading }}>
