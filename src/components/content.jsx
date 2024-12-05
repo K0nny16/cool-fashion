@@ -6,14 +6,46 @@ import { useNavigate } from "react-router-dom";
 
 export function Content() {
   const { products, loading } = useProducts();
+  const navigate = useNavigate();
+
+  const handleNavigate = (path) => {
+    navigate(path);
+  };
 
   if (loading) {
-    return <p>Loading products...</p>; 
+    return <p>Loading products...</p>;
   }
+
 
   return (
     <div>
-      <h1>Welcome to the Homepage!</h1>
+      {/* Återskapad Black Friday-banner och kategori-bilder */}
+      <div className="black-friday-banner">BLACK FRIDAY</div>
+      <div className="content-category-img">
+        {/* Herrskor */}
+        <img
+          src="/assets/herrskor.PNG"
+          alt="herrskor"
+          className="clickable-image"
+          onClick={() => handleNavigate("/maleShoes")}
+        />
+        <div className="content-category-vertical-img">
+          {/* Damskor */}
+          <img
+            src="/assets/damskor.PNG"
+            alt="damskor"
+            className="clickable-image"
+            onClick={() => handleNavigate("/shoesFemale")}
+          />
+          {/* Accessoarer */}
+          <img
+            src="/assets/accessoarer.PNG"
+            alt="accessoarer"
+            className="clickable-image"
+            onClick={() => handleNavigate("/accessoriesMale")}
+          />
+        </div>
+      </div>
       <div className="content-cards">
         {products.map((product) => (
           <ContentCard key={product.id} product={product} />
