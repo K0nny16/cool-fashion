@@ -4,6 +4,7 @@ import "../css/content.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+
 export function Content() {
   const { products, loading } = useProducts();
   const navigate = useNavigate();
@@ -15,7 +16,6 @@ export function Content() {
   if (loading) {
     return <p>Loading products...</p>;
   }
-
 
   return (
     <div>
@@ -54,7 +54,7 @@ export function Content() {
   );
 }
 
-export function ContentCard({ product }) {
+export function ContentCard({ product}) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const navigate = useNavigate();
 
@@ -62,15 +62,15 @@ export function ContentCard({ product }) {
     return null;
   }
 
-  const images = product.images || [];
+  const { productName, price, images, quant } = product;
   const currentImage =
     images[currentImageIndex] || "https://via.placeholder.com/150";
 
   return (
-    <div 
-    className="content-card"
-    onClick={() => navigate(`/product/${product.id}`)}
-    style={{ cursor: "pointer" }} 
+    <div
+      className="content-card"
+      onClick={() => navigate(`/product/${product.id}`)}
+      style={{ cursor: "pointer" }}
     >
       <div className="image-carousel">
         <img
@@ -99,6 +99,16 @@ export function ContentCard({ product }) {
 
       <h3>{product.productName}</h3>
       <p>{`Pris: $${product.price}`}</p>
+      <div className="buycontainer">
+        {quant === 0 && <p className="p-outofstock">Slutsålt!</p>}
+        <button
+          className="buybutton"
+          disabled={quant === 0}
+          onClick={() => alert(`Köpt: ${productName}`)}
+        >
+          Köp
+        </button>
+      </div>
     </div>
   );
 }

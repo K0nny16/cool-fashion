@@ -140,10 +140,10 @@ body {
 }
 
 .content-card-quant {
-    font-size: 18px;
-    font-weight: bold;
-    margin: 10px 0;
-    color: #ef0909;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 10px 0;
+  color: #ef0909;
 }
 
 .content-card-price {
@@ -205,4 +205,28 @@ body {
 
 .thumbnail.active {
   border-color: #007bff;
+}
+
+.buycontainer {
+  display: table-column;
+  gap: 20px;
+  margin: auto;
+}
+
+.p-outofstock {
+  width: 30%;
+  height: 10%;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  color: red;
+}
+
+.buybutton {
+  width: 70px;
+  height: 40px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
