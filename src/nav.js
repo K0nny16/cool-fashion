@@ -45,6 +45,7 @@ export async function fetchMenuData(adminState) {
           "Skapa Kategori",
           "Se Alla Produkter",
           "Tickets",
+          "Kolla Lager",
         ],
       });
     }
