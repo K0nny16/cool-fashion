@@ -17,7 +17,9 @@ export async function fetchMenuData(adminState) {
     // Shop
     if (navData.Shop) {
       const shopDropdown = [];
-      for (const [categoryName, subCategories] of Object.entries(navData.Shop)) {
+      for (const [categoryName, subCategories] of Object.entries(
+        navData.Shop
+      )) {
         shopDropdown.push({
           name: categoryName,
           content: Object.keys(subCategories),
@@ -45,6 +47,7 @@ export async function fetchMenuData(adminState) {
           "Skapa Kategori",
           "Se Alla Produkter",
           "Tickets",
+          "Kolla Lager",
         ],
       });
     }
