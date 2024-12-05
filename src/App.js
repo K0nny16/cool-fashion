@@ -20,6 +20,7 @@ import { CheckStock } from "./components/checkStock";
 import { FemaleAccessories } from "./components/femaleaccessories";
 import { FemaleClothes } from "./components/femaleclothes";
 import { MaleClothes } from "./components/maleclothes";
+import { TotaltLager } from "./components/Admin/totaltLager";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -28,7 +29,6 @@ function App() {
     <ProductsProvider>
       <Router>
         <Navbar userState={user} />
-        {console.log(user)}
         <Routes>
           <Route path="/" element={<Content />} />
           <Route path="/allItems" element={<AllItems />} />
@@ -48,6 +48,7 @@ function App() {
           <Route path="/femaleaccessories" element={<FemaleAccessories />} />
           <Route path="/femaleclothes" element={<FemaleClothes />} />
           <Route path="/maleclothes" element={<MaleClothes />} />
+          <Route path="/totaltLager" element={<TotaltLager/>}/>
           {/* Lägg till nya routes här för nyhter, dam skor, herr skor, osv*/}
         </Routes>
         <Footer />

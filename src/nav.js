@@ -49,6 +49,7 @@ export async function fetchMenuData(adminState) {
           "Se Alla Produkter",
           "Tickets",
           "Kolla Lager",
+          "Totalt lager",
         ],
       });
     }
