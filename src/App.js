@@ -20,6 +20,7 @@ import { CheckStock } from "./components/checkStock";
 import { FemaleAccessories } from "./components/femaleaccessories";
 import { FemaleClothes } from "./components/femaleclothes";
 import { MaleClothes } from "./components/maleclothes";
+import {SearchResults} from "./components/SearchResults";
 import { TotaltLager } from "./components/Admin/totaltLager";
 
 function App() {
@@ -45,6 +46,7 @@ function App() {
           <Route path="/product/:productId" element={<ProductPage />} />
           <Route path="/checkstock" element={<CheckStock />} />
           <Route path="/wishlist" element={<WishlistPage />} />
+          <Route path="/search" element={<SearchResults />} />
           <Route path="/femaleaccessories" element={<FemaleAccessories />} />
           <Route path="/femaleclothes" element={<FemaleClothes />} />
           <Route path="/maleclothes" element={<MaleClothes />} />
