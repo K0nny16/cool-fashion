@@ -1,30 +1,13 @@
-import React, { useState, useEffect } from "react";
-import { firestoreDB } from "../firebase";
-import { collection, getDocs } from "firebase/firestore";
-import { ContentCard } from "./content";
+/*
+import React, { useState } from "react";
+import { useProducts } from "../context/ProductsProvider"; // Import the context provider
+import { ContentCard } from "./content"; // Import ContentCard for displaying products
 
-export function SearchProducts({ onProductClick }) {
-    const [products, setProducts] = useState([]);
-    const [searchTerm, setSearchTerm] = useState("");
+export function SearchProducts() {
+    const { products, loading } = useProducts(); // Fetch products and loading state
+    const [searchTerm, setSearchTerm] = useState(""); // State for the search input
 
-    // hämtar data från Firestore
-    useEffect(() => {
-        const fetchProducts = async () => {
-            try {
-                const querySnapshot = await getDocs(collection(firestoreDB, "Products"));
-                const productsList = querySnapshot.docs.map((doc) => ({
-                    id: doc.id,
-                    ...doc.data(),
-                }));
-                setProducts(productsList);
-            } catch (error) {
-                console.error("Error fetching products: ", error);
-            }
-        };
-
-        fetchProducts();
-    }, []);
-
+    // Filter products based on search term
     const filteredProducts = products.filter(
         (product) =>
             product.productName.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -33,29 +16,44 @@ export function SearchProducts({ onProductClick }) {
     );
 
     return (
-
-        <div className="search-products">
+        <div className="search-products" style={{ padding: "20px" }}>
+            <h2>Search Products</h2>
+            {/!* Search Input *!/}
             <input
                 type="text"
-                placeholder="Sök för plagg..."
+                placeholder="Search for a product..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                style={{ padding: "10px", fontSize: "16px", width: "100%", marginBottom: "20px" }}
+                style={{
+                    padding: "10px",
+                    fontSize: "16px",
+                    width: "50%",
+                    margin: "10px auto",
+                    display: "block",
+                    borderRadius: "5px",
+                    border: "1px solid #ddd",
+                }}
             />
-
-            <div className="content-cards">
-                {filteredProducts.map((product) => (
-                    <ContentCard
-                        key={product.id}
-                        image={product.img}
-                        title={product.productName}
-                        quant={`Det finns ${product.quant} i lager`}
-                        price={`${product.price} kr`}
-                        buttonText="Köp"
-                        onButtonClick={() => onProductClick(product)}
-                    />
-                ))}
-            </div>
+            {/!* Display Products *!/}
+            {loading ? (
+                <p>Loading products...</p>
+            ) : filteredProducts.length > 0 ? (
+                <div className="content-cards">
+                    {filteredProducts.map((product) => (
+                        <ContentCard
+                            key={product.id}
+                            image={product.img}
+                            title={product.productName}
+                            price={`${product.price} SEK`}
+                            buttonText="Buy Now"
+                            onButtonClick={() => alert(`You selected: ${product.productName}`)}
+                        />
+                    ))}
+                </div>
+            ) : (
+                <p>No products found.</p>
+            )}
         </div>
     );
 }
+*/

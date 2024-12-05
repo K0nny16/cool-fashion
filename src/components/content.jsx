@@ -2,12 +2,15 @@ import React from "react";
 import { useProducts } from "../components/productprovider";
 import "../css/content.css";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 
 
 export function Content() {
   const { products, loading } = useProducts();
   const navigate = useNavigate();
+
+  const location = useLocation();
+  const searchResults = location.state?.searchResults || products;
 
   const handleNavigate = (path) => {
     navigate(path);
@@ -18,39 +21,39 @@ export function Content() {
   }
 
   return (
-    <div>
-      {/* Återskapad Black Friday-banner och kategori-bilder */}
-      <div className="black-friday-banner">BLACK FRIDAY</div>
-      <div className="content-category-img">
-        {/* Herrskor */}
-        <img
-          src="/assets/herrskor.PNG"
-          alt="herrskor"
-          className="clickable-image"
-          onClick={() => handleNavigate("/maleShoes")}
-        />
-        <div className="content-category-vertical-img">
+      <div>
+        {/* Återskapad Black Friday-banner och kategori-bilder */}
+        <div className="black-friday-banner">BLACK FRIDAY</div>
+        <div className="content-category-img">
+         {/*  Herrskor*/}
           <img
-            src="/assets/damskor.PNG"
-            alt="damskor"
-            className="clickable-image"
-            onClick={() => handleNavigate("/shoesFemale")}
+              src="/assets/herrskor.PNG"
+              alt="herrskor"
+              className="clickable-image"
+              onClick={() => handleNavigate("/maleShoes")}
           />
-          <img
-            src="/assets/accessoarer.PNG"
-            alt="accessoarer"
-            className="clickable-image"
-            onClick={() => handleNavigate("/accessoriesMale")}
-          />
+          <div className="content-category-vertical-img">
+            <img
+                src="/assets/damskor.PNG"
+                alt="damskor"
+                className="clickable-image"
+                onClick={() => handleNavigate("/shoesFemale")}
+            />
+            <img
+                src="/assets/accessoarer.PNG"
+                alt="accessoarer"
+                className="clickable-image"
+                onClick={() => handleNavigate("/accessoriesMale")}
+            />
+          </div>
+        </div>
+        <h2 className="news-title">NYHETER</h2>
+        <div className="content-cards">
+          {searchResults.map((product) => (
+              <ContentCard key={product.id} product={product}/>
+             ))}
         </div>
       </div>
-      <h2 className="news-title">NYHETER</h2>
-      <div className="content-cards">
-        {products.map((product) => (
-          <ContentCard key={product.id} product={product} />
-        ))}
-      </div>
-    </div>
   );
 }
 
