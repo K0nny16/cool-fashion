@@ -1,7 +1,29 @@
+import { useState } from "react";
 import "../css/footer.css";
 import Popup from "reactjs-popup";
+import { addDoc, collection } from "firebase/firestore";
+import { firestoreDB } from "../firebase";
 
 export function Footer() {
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+
+  async function postToDB(event,close){
+    event.preventDefault();
+    try{
+      const msg = {
+        email: email,
+        message: message,
+        date: new Date().toISOString(),
+      }
+      const docRef = await addDoc(collection(firestoreDB,"Support"),msg)
+      close()
+    }catch(error){
+      alert("Error posting message!")
+      console.error(error);
+    }
+  }
+
   return (
     <>
       <footer className="footer">
@@ -36,13 +58,14 @@ export function Footer() {
           {(close) => (
             <div className="popup">
               <h3>Kontakta oss</h3>
-              <form className="popup-form">
+              <form className="popup-form" onSubmit={(e) => postToDB(e,close)}>
                 <label htmlFor="email">Email:</label>
                 <input
                   type="email"
                   id="email"
                   name="email"
                   placeholder="Din email"
+                  onChange={(e) => setEmail(e.target.value)}
                   required
                 />
 
@@ -50,6 +73,7 @@ export function Footer() {
                 <textarea
                   id="message"
                   placeholder="Ditt meddelande"
+                  onChange={(e) => setMessage(e.target.value)}
                   required
                 ></textarea>
                 <div className="form-buttons">

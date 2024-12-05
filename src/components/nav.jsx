@@ -32,6 +32,7 @@ export function Navbar({userState}){
       fetchData();
     },[userState]);
 
+    
     return (
         <nav className="navbar">
           <div className="navbar-left">
