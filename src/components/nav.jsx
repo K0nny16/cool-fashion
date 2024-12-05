@@ -44,15 +44,14 @@ export function Navbar({ userState }) {
     fetchData();
   }, [userState]);
 
-  const filteredProducts = products.filter(
-      (product) =>
-          product.productName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          product.category.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          product.subCat.toLowerCase().includes(searchTerm.toLowerCase())
-  );
 
-  const handleSearchSubmit = () => {
-    navigate("/", { state: { searchResults: filteredProducts } });
+  const handleSearch = () => {
+    const filteredProducts = products.filter((product) =>
+        product.productName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        product.category.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        product.subCat.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    navigate("/search", { state: { searchResults: filteredProducts } });
   };
 
   return (
@@ -151,7 +150,7 @@ export function Navbar({ userState }) {
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
             />
-            <button onClick={handleSearchSubmit}>Söka</button>
+            <button onClick={handleSearch}>Söka</button>
           </li>
           <li className="navbar-item">
             <span onClick={() => navigate("/loginPage")}>Login</span>
