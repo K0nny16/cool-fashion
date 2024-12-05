@@ -143,15 +143,16 @@ export function Navbar({ userState }) {
           ))}
         </ul>
       </div>
-        <div className="navbar-right">
-          <li className="navbar-item search-bar">
-            <input
-                type="text"
-                placeholder="Sökning av plagg... "
-                value={searchTerm}
+          <div className="navbar-right">
+        <li className="navbar-item">
+          <input
+              type="text"
+              className="animated-search-input"
+              placeholder="🔍Sökning av plagg... "
+              value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
+                onKeyDown={handleSearch}
             />
-            <button onClick={handleSearch}>Söka</button>
           </li>
           <li className="navbar-item">
             <span onClick={() => navigate("/loginPage")}>Login</span>
