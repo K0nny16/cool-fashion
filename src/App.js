@@ -15,9 +15,12 @@ import { useState } from "react";
 import { ProductsProvider } from "./components/productprovider";
 import { Tickets } from "./components/Admin/tickets";
 import { WishlistPage } from "./components/wishlist";
-
 import { ProductPage } from "./components/ProductPage";
 import { CheckStock } from "./components/checkStock";
+import { FemaleAccessories } from "./components/femaleaccessories";
+import { FemaleClothes } from "./components/femaleclothes";
+import { MaleClothes } from "./components/maleclothes";
+
 function App() {
   const [user, setUser] = useState(null);
 
@@ -37,10 +40,13 @@ function App() {
           <Route path="/editItem" element={<EditItems />} />
           <Route path="/addItems" element={<AddItems />} />
           <Route path="/loginpage" element={<LoginPage setUser={setUser} />} />
-          <Route path="/tickets" element={<Tickets/>}/>
+          <Route path="/tickets" element={<Tickets />} />
           <Route path="/product/:productId" element={<ProductPage />} />
-          <Route path="/checkstock" element={<CheckStock/>}/>
+          <Route path="/checkstock" element={<CheckStock />} />
           <Route path="/wishlist" element={<WishlistPage />} />
+          <Route path="/femaleaccessories" element={<FemaleAccessories />} />
+          <Route path="/femaleclothes" element={<FemaleClothes />} />
+          <Route path="/maleclothes" element={<MaleClothes />} />
           {/* Lägg till nya routes här för nyhter, dam skor, herr skor, osv*/}
         </Routes>
         <Footer />

@@ -25,6 +25,12 @@ export function Navbar({ userState }) {
     if (itemName === "Login") navigate("/loginpage");
     if (itemName === "Kolla Lager") navigate("/checkstock");
     if (itemName === "Tickets") navigate("/tickets");
+    if (itemName === "Accessoarer" && parentCategory === "Dam")
+      navigate("/femaleaccessories");
+    if (itemName === "Kläder" && parentCategory === "Dam")
+      navigate("/femaleclothes");
+    if (itemName === "Kläder" && parentCategory === "Man")
+      navigate("/maleclothes");
   }
 
   useEffect(() => {
