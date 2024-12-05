@@ -46,6 +46,7 @@ export function Content() {
           />
         </div>
       </div>
+      <h2 className="news-title">NYHETER</h2>
       <div className="content-cards">
         {products.map((product) => (
           <ContentCard key={product.id} product={product} />
