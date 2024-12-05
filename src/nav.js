@@ -52,6 +52,16 @@ export async function fetchMenuData(adminState) {
       });
     }
 
+    // Add user menu if adminState is true
+    if (adminState?.role === "user") {
+      menuItems.push({
+        name: "Din profil",
+        dropdown: [
+          "Wishlist",
+        ],
+      });
+    }
+
     return menuItems;
   } catch (error) {
     console.error("Error fetching menu data:", error);
