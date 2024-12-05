@@ -21,6 +21,7 @@ export function Navbar({userState}){
         if(itemName === "Skapa Kategori") navigate("/addCategory")
         if(itemName === "Lägg till Produkter") navigate("/addItems")
         if(itemName === "Login") navigate("/loginpage")
+        if(itemName === "Kolla Lager") navigate("/checkstock")
     }
     
     useEffect(() => {

@@ -13,6 +13,7 @@ import { AddItems } from "./components/Admin/AddItems";
 import { LoginPage } from "./components/loginpage";
 import { useState } from "react";
 import { ProductsProvider } from "./components/productprovider";
+import { CheckStock } from "./components/checkStock";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -33,6 +34,7 @@ function App() {
           <Route path="/editItem" element={<EditItems />} />
           <Route path="/addItems" element={<AddItems />} />
           <Route path="/loginpage" element={<LoginPage setUser={setUser} />} />
+          <Route path="/checkstock" element={<CheckStock />} />
           {/* Lägg till nya routes här för nyhter, dam skor, herr skor, osv*/}
         </Routes>
         <Footer />
