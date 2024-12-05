@@ -2,12 +2,15 @@ import React, { useState, useEffect } from "react";
 import "../css/nav.css";
 import { useNavigate } from "react-router-dom";
 import { fetchMenuData } from "../nav";
+import { useProducts } from "../components/productprovider";
 
 const logo = "/assets/cool-fashion-logo2.PNG";
 
 export function Navbar({ userState }) {
   const [openDropdown, setOpenDropdown] = useState(null);
   const [menuItems, setMenuItems] = useState([]);
+  const [searchTerm, setSearchTerm] = useState(""); // Track search input
+  const { products } = useProducts();
   const navigate = useNavigate();
   //Placeholder funktion för logiken med vad man klickar på.
   function handleItemClick(parentCategory, itemName) {
@@ -40,6 +43,17 @@ export function Navbar({ userState }) {
     };
     fetchData();
   }, [userState]);
+
+  const filteredProducts = products.filter(
+      (product) =>
+          product.productName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          product.category.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          product.subCat.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const handleSearchSubmit = () => {
+    navigate("/", { state: { searchResults: filteredProducts } });
+  };
 
   return (
     <nav className="navbar">
@@ -129,14 +143,20 @@ export function Navbar({ userState }) {
           ))}
         </ul>
       </div>
-      <div className="navbar-right">
-        <li className="navbar-item">
-          <span onClick={() => navigate("/loginPage")}>Login</span>
-        </li>
-        <li className="navbar-item search-bar">
-          <input type="text" placeholder="Search..." />
-        </li>
-      </div>
+        <div className="navbar-right">
+          <li className="navbar-item search-bar">
+            <input
+                type="text"
+                placeholder="Sökning av plagg... "
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+            />
+            <button onClick={handleSearchSubmit}>Söka</button>
+          </li>
+          <li className="navbar-item">
+            <span onClick={() => navigate("/loginPage")}>Login</span>
+          </li>
+        </div>
     </nav>
   );
 }
