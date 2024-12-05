@@ -28,7 +28,7 @@ export function LoginPage({ setUser }) {
       if (snapshot.exists()) {
         const role = snapshot.val().role;
 
-        setUser({ email: user.email, role });
+        setUser({ email: user.email,role });
 
         alert(`Logged in as: ${user.email} with role: ${role}`);
         navigate("/");
@@ -137,7 +137,6 @@ export function LoginPage({ setUser }) {
         />
         <button onClick={loginUser}>Login</button>
       </div>
-
       <div className="Register">
         <h2>Register</h2>
         <input
@@ -155,8 +154,6 @@ export function LoginPage({ setUser }) {
         <button onClick={registerUser}>Register as User</button>
         <button onClick={registerAdmin}>Register as Admin</button>
       </div>
-
-      
     </div>
   );
 }

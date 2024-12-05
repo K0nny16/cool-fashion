@@ -3,6 +3,7 @@ import { getDatabase, ref, get } from "firebase/database";
 export async function fetchMenuData(adminState) {
   const db = getDatabase();
   const navRef = ref(db, "nav");
+  console.log(adminState)
 
   try {
     const snapshot = await get(navRef);
@@ -61,7 +62,6 @@ export async function fetchMenuData(adminState) {
         ],
       });
     }
-
     return menuItems;
   } catch (error) {
     console.error("Error fetching menu data:", error);
