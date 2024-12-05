@@ -4,7 +4,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
-import { ref, set, get } from "firebase/database";
+import { ref, set, get, update } from "firebase/database";
 import "../css/loginpage.css";
 import { dbRealTime } from "../firebase";
 import { useNavigate } from "react-router-dom";
@@ -16,6 +16,7 @@ export function LoginPage({ setUser }) {
 
   const auth = getAuth();
 
+  // Login function for users
   async function loginUser() {
     try {
       const userCred = await signInWithEmailAndPassword(auth, email, password);
@@ -30,7 +31,7 @@ export function LoginPage({ setUser }) {
         setUser({ email: user.email, role });
 
         alert(`Logged in as: ${user.email} with role: ${role}`);
-        navigate("/")
+        navigate("/");
       } else {
         alert("Role not found!");
       }
@@ -39,19 +40,27 @@ export function LoginPage({ setUser }) {
     }
   }
 
+  // Register function for regular users
   async function registerUser() {
     try {
-      const userCred = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
+      const userCred = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCred.user;
 
-      await set(ref(dbRealTime, `users/${user.uid}`), {
+      // Define user data with empty wishlist array
+      const userData = {
         email: user.email,
         role: "user",
-      });
+        wishlist: []  // Initial empty string array for wishlist
+      };
+
+      // Log to see what data is being sent to Firebase
+      console.log("Setting data for user:", userData);
+
+      // Save data to Firebase
+      await set(ref(dbRealTime, `users/${user.uid}`), userData);
+
+      // Log success
+      console.log("Data saved to Firebase for user:", user.uid);
 
       alert("User created: " + user.email + " with role: user");
     } catch (error) {
@@ -59,23 +68,54 @@ export function LoginPage({ setUser }) {
     }
   }
 
+  // Register function for admins
   async function registerAdmin() {
     try {
-      const userCred = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
+      const userCred = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCred.user;
 
-      await set(ref(dbRealTime, `users/${user.uid}`), {
+      // Define admin data with empty wishlist array
+      const adminData = {
         email: user.email,
         role: "admin",
-      });
+        wishlist: []  // Initial empty string array for wishlist
+      };
+
+      // Log to see what data is being sent to Firebase
+      console.log("Setting data for admin:", adminData);
+
+      // Save data to Firebase
+      await set(ref(dbRealTime, `users/${user.uid}`), adminData);
+
+      // Log success
+      console.log("Data saved to Firebase for admin:", user.uid);
 
       alert("Admin user created: " + user.email + " with role: admin");
     } catch (error) {
       alert("Admin registration failed: " + error.message);
+    }
+  }
+
+  // Function to update the wishlist for a user
+  async function updateWishlist(userId, newItem) {
+    const wishlistRef = ref(dbRealTime, `users/${userId}/wishlist`);
+
+    // Fetch the current wishlist
+    const currentWishlistSnapshot = await get(wishlistRef);
+    if (currentWishlistSnapshot.exists()) {
+      // Get current wishlist array
+      const currentWishlist = currentWishlistSnapshot.val();
+
+      // Add the new item (ensure it's a string)
+      const updatedWishlist = [...currentWishlist, newItem];
+
+      // Update the wishlist in Firebase
+      await set(wishlistRef, updatedWishlist);
+
+      console.log("Wishlist updated:", updatedWishlist);
+      alert("Wishlist updated with item: " + newItem);
+    } else {
+      alert("Wishlist does not exist for this user.");
     }
   }
 
@@ -115,6 +155,8 @@ export function LoginPage({ setUser }) {
         <button onClick={registerUser}>Register as User</button>
         <button onClick={registerAdmin}>Register as Admin</button>
       </div>
+
+      
     </div>
   );
 }

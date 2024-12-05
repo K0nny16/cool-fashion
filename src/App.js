@@ -14,6 +14,7 @@ import { LoginPage } from "./components/loginpage";
 import { useState } from "react";
 import { ProductsProvider } from "./components/productprovider";
 import { Tickets } from "./components/Admin/tickets";
+import { WishlistPage } from "./components/wishlist";
 
 import { ProductPage } from "./components/ProductPage";
 import { CheckStock } from "./components/checkStock";
@@ -39,6 +40,7 @@ function App() {
           <Route path="/tickets" element={<Tickets/>}/>
           <Route path="/product/:productId" element={<ProductPage />} />
           <Route path="/checkstock" element={<CheckStock/>}/>
+          <Route path="/wishlist" element={<WishlistPage />} />
           {/* Lägg till nya routes här för nyhter, dam skor, herr skor, osv*/}
         </Routes>
         <Footer />

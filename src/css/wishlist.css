@@ -1,0 +1,28 @@
+.wishlist-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+  }
+  
+  .wishlist-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .remove-from-wishlist-button {
+    margin-top: 0.5rem;
+    padding: 0.5rem 1rem;
+    background-color: #ff1e1e;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .remove-from-wishlist-button:hover {
+    background-color: #cc1717;
+  }
+  
