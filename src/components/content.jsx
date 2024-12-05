@@ -30,14 +30,12 @@ export function Content() {
           onClick={() => handleNavigate("/maleShoes")}
         />
         <div className="content-category-vertical-img">
-          {/* Damskor */}
           <img
             src="/assets/damskor.PNG"
             alt="damskor"
             className="clickable-image"
             onClick={() => handleNavigate("/shoesFemale")}
           />
-          {/* Accessoarer */}
           <img
             src="/assets/accessoarer.PNG"
             alt="accessoarer"
@@ -100,7 +98,7 @@ export function ContentCard({ product }) {
       </div>
 
       <h3>{product.productName}</h3>
-      <p>{`Price: $${product.price}`}</p>
+      <p>{`Pris: $${product.price}`}</p>
     </div>
   );
 }
