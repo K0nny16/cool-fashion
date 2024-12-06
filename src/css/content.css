@@ -208,7 +208,6 @@ body {
 }
 
 .buycontainer {
-  display: table-column;
   gap: 20px;
   margin: auto;
 }
