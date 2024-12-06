@@ -25,13 +25,13 @@ export function Content() {
   }
 
   return (
-    <div>
-      {/* Återskapad Black Friday-banner och kategori-bilder */}
-      <div className="black-friday-banner">BLACK FRIDAY</div>
-      <div className="content-category-img">
-        {/* Herrskor */}
-        <img
-          src="/assets/herrskor.PNG"
+      <div>
+        {/* Black Friday Banner */}
+        <div className="black-friday-banner"></div>
+  <div className="content-category-img">
+    {/* Herrskor */}
+    <img
+        src="/assets/herrskor.PNG"
           alt="herrskor"
           className="clickable-image"
           onClick={() => handleNavigate("/maleShoes")}

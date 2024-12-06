@@ -171,17 +171,49 @@ body {
   text-align: center; /* Justera rubriken i mitten */
   margin-bottom: 20px; /* Ge lite avstånd under rubriken */
 }
-
+/* Black Friday Banner */
 .black-friday-banner {
-  background-color: red;
-  color: white;
-  text-align: center;
-  padding: 20px 0;
-  font-size: 24px;
+  font-size: 2.5rem; /* Adjust size as needed */
   font-weight: bold;
-  letter-spacing: 2px;
-  text-shadow: 2px 2px 5px black;
+  color: #fff;
+  background-color: #ff0000; /* Red background */
+  padding: 20px 0;
+  overflow: hidden;
+  white-space: nowrap; /* Prevents text from wrapping */
+  position: relative; /* Required for animation */
 }
+
+/* Sliding Text */
+.black-friday-banner::after {
+  content: "BLACK FRIDAY! // 50 % RABATT // ANVÄND KOD BLACFRI24 // BLACK FRIDAY! // 50 % RABATT // ANVÄND KOD BLACFRI24 // BLACK FRIDAY! // 50 % RABATT // ANVÄND KOD BLACFRI24 ";
+  position: absolute;
+  top: 50%; /* Center vertically */
+  left: 100%; /* Start outside the right edge */
+  transform: translateY(-40%); /* Align vertically */
+  animation: slideLeft 25s linear infinite; /* Infinite sliding animation */
+  font-family: "Microsoft Himalaya", serif;
+}
+
+.black-friday-banner:hover::after {
+  animation-play-state: paused;
+}
+
+
+@keyframes slideLeft {
+  0% {
+    left: 100%; /* Start from the right */
+  }
+  100% {
+    left: -100%; /* End off-screen to the left */
+  }
+}
+
+@media (max-width: 768px) {
+  .black-friday-banner {
+    font-size: 1.5rem;
+  }
+}
+
 
 .image-thumbnails {
   display: flex;
