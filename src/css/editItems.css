@@ -1,59 +1,83 @@
 .content-card {
-  border: 1px solid #ccc;
-  padding: 16px;
-  margin-bottom: 16px;
-  border-radius: 8px;
-  text-align: center;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  margin: 20px;
 }
 
-h1,
-h2,
-h3 {
-  display: flex;
-  justify-content: center;
-  font-weight: bold;
+input {
+  margin-bottom: 10px;
+  padding: 5px;
+  font-size: 16px;
 }
 
-.content-card-image {
-  max-width: 150px;
-  margin-bottom: 8px;
-  display: flex;
-  justify-content: center;
-  margin: auto;
-}
-
-.contentInput {
-  margin: 8px 0;
-  padding: 4px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  width: 100%;
-  max-width: 200px;
-  align-items: center;
-}
-
-.contentButton {
-  padding: 6px 12px;
-  background-color: #000000;
+button {
+  padding: 10px 15px;
+  background-color: #4CAF50;
   color: white;
   border: none;
-  border-radius: 4px;
   cursor: pointer;
-  margin-top: 8px;
 }
 
-.contentButton:hover {
-  background-color: #00491b;
+button:hover {
+  background-color: #45a049;
 }
 
-.contentList {
+/* Layout för bilder i en horisontell rad */
+.image-list {
   display: flex;
   flex-wrap: wrap;
-  font-weight: bold;
-  gap: 16px;
-  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.image-item {
+  border: 1px solid #ddd;
+  padding: 5px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.image-thumb {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.product-edit {
+  margin-bottom: 20px;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.product-edit input {
+  margin: 5px 0;
+  padding: 8px;
+  width: 200px;
+}
+
+.image-item {
+  border-radius: 8px;
+  cursor: move;
+  transition: transform 0.2s ease;
+}
+
+.image-item:hover {
+  transform: scale(1.05);
+}
+
+.image-list {
+  display: flex;
+  gap: 10px;
+}
+
+button {
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
 }
