@@ -6,6 +6,7 @@ import "../../css/totaltLager.css"
 export function TotaltLager(){
     const [totalQuant,setTotalQuant] = useState(0)
     const [recentProducts, setRecentProducts] = useState([])
+    const [uniqueProducts, setUniqueProducts] = useState(0);
 
     async function fetchData() {
         try{
@@ -13,7 +14,9 @@ export function TotaltLager(){
             const allProductsSnapshot = await getDocs(productsRef);
 
             let totalQuant = 0;
+            let uniqueProducts = 0;
             allProductsSnapshot.forEach(doc => {
+                uniqueProducts++
                 totalQuant += doc.data().quant;
             })
 
@@ -24,7 +27,7 @@ export function TotaltLager(){
                 id: doc.id,
                 ...doc.data()
             }))
-            return {totalQuant,recentProducts}
+            return {totalQuant,recentProducts,uniqueProducts}
         }catch(error){
             console.log(error)
         }
@@ -32,9 +35,10 @@ export function TotaltLager(){
 
     useEffect(() => {
         const getData = async () => {
-            const {totalQuant,recentProducts} = await fetchData()
+            const {totalQuant,recentProducts,uniqueProducts} = await fetchData()
             setTotalQuant(totalQuant)
             setRecentProducts(recentProducts)
+            setUniqueProducts(uniqueProducts)
         }
         getData();
     }, [])
@@ -43,7 +47,8 @@ export function TotaltLager(){
         <div className="products-page">
             <header className="header">
                 <h1>Produkter</h1>
-                <h2>Totalt antal varor: {totalQuant}</h2>
+                <h2>Totalt antal över alla varor: {totalQuant}</h2>
+                <h2>Antal unika produkter: {uniqueProducts}</h2>
             </header>
             <section className="recent-products">
                 <h3>10 Senaste Tillagda Produkter</h3>
