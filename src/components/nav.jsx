@@ -34,6 +34,7 @@ export function Navbar({ userState }) {
       navigate("/femaleclothes");
     if (itemName === "Kläder" && parentCategory === "Man")
       navigate("/maleclothes");
+    if(itemName === "Totalt Lager") navigate("/totaltLager")
   }
 
   useEffect(() => {
@@ -44,15 +45,14 @@ export function Navbar({ userState }) {
     fetchData();
   }, [userState]);
 
-  const filteredProducts = products.filter(
-      (product) =>
-          product.productName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          product.category.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          product.subCat.toLowerCase().includes(searchTerm.toLowerCase())
-  );
 
-  const handleSearchSubmit = () => {
-    navigate("/", { state: { searchResults: filteredProducts } });
+  const handleSearch = () => {
+    const filteredProducts = products.filter((product) =>
+        product.productName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        product.category.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        product.subCat.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    navigate("/search", { state: { searchResults: filteredProducts } });
   };
 
   return (
@@ -143,15 +143,16 @@ export function Navbar({ userState }) {
           ))}
         </ul>
       </div>
-        <div className="navbar-right">
-          <li className="navbar-item search-bar">
-            <input
-                type="text"
-                placeholder="Sökning av plagg... "
-                value={searchTerm}
+          <div className="navbar-right">
+        <li className="navbar-item">
+          <input
+              type="text"
+              className="animated-search-input"
+              placeholder="🔍Sökning av plagg... "
+              value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
+                onKeyDown={handleSearch}
             />
-            <button onClick={handleSearchSubmit}>Söka</button>
           </li>
           <li className="navbar-item">
             <span onClick={() => navigate("/loginPage")}>Login</span>
