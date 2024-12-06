@@ -4,13 +4,17 @@ import "../css/content.css";
 import { useState } from "react";
 import {useLocation, useNavigate} from "react-router-dom";
 
-
 export function Content() {
   const { products, loading } = useProducts();
   const navigate = useNavigate();
 
   const location = useLocation();
   const searchResults = location.state?.searchResults || products;
+
+  // Sortera produkterna efter senaste datum och limitera till 4 produkter
+  const sortedAndLimitedProducts = searchResults
+    .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)) // Sortera efter senaste skapelsedatum
+    .slice(0, 4); // Begränsa till de 4 senaste produkterna
 
   const handleNavigate = (path) => {
     navigate(path);
@@ -21,43 +25,43 @@ export function Content() {
   }
 
   return (
-      <div>
-        {/* Återskapad Black Friday-banner och kategori-bilder */}
-        <div className="black-friday-banner">BLACK FRIDAY</div>
-        <div className="content-category-img">
-         {/*  Herrskor*/}
+    <div>
+      {/* Återskapad Black Friday-banner och kategori-bilder */}
+      <div className="black-friday-banner">BLACK FRIDAY</div>
+      <div className="content-category-img">
+        {/* Herrskor */}
+        <img
+          src="/assets/herrskor.PNG"
+          alt="herrskor"
+          className="clickable-image"
+          onClick={() => handleNavigate("/maleShoes")}
+        />
+        <div className="content-category-vertical-img">
           <img
-              src="/assets/herrskor.PNG"
-              alt="herrskor"
-              className="clickable-image"
-              onClick={() => handleNavigate("/maleShoes")}
+            src="/assets/damskor.PNG"
+            alt="damskor"
+            className="clickable-image"
+            onClick={() => handleNavigate("/shoesFemale")}
           />
-          <div className="content-category-vertical-img">
-            <img
-                src="/assets/damskor.PNG"
-                alt="damskor"
-                className="clickable-image"
-                onClick={() => handleNavigate("/shoesFemale")}
-            />
-            <img
-                src="/assets/accessoarer.PNG"
-                alt="accessoarer"
-                className="clickable-image"
-                onClick={() => handleNavigate("/accessoriesMale")}
-            />
-          </div>
-        </div>
-        <h2 className="news-title">NYHETER</h2>
-        <div className="content-cards">
-          {searchResults.map((product) => (
-              <ContentCard key={product.id} product={product}/>
-             ))}
+          <img
+            src="/assets/accessoarer.PNG"
+            alt="accessoarer"
+            className="clickable-image"
+            onClick={() => handleNavigate("/accessoriesMale")}
+          />
         </div>
       </div>
+      <h2 className="news-title">NYHETER</h2>
+      <div className="content-cards">
+        {sortedAndLimitedProducts.map((product) => (
+          <ContentCard key={product.id} product={product} />
+        ))}
+      </div>
+    </div>
   );
 }
 
-export function ContentCard({ product}) {
+export function ContentCard({ product }) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const navigate = useNavigate();
 

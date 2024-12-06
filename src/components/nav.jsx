@@ -35,6 +35,7 @@ export function Navbar({ userState }) {
     if (itemName === "Kläder" && parentCategory === "Man")
       navigate("/maleclothes");
     if(itemName === "Totalt Lager") navigate("/totaltLager")
+      if(itemName === "Wishlist") navigate("/wishlist")
   }
 
   useEffect(() => {
