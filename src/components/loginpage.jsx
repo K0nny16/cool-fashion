@@ -16,7 +16,6 @@ export function LoginPage({ setUser }) {
 
   const auth = getAuth();
 
-  // Login function for users
   async function loginUser() {
     try {
       const userCred = await signInWithEmailAndPassword(auth, email, password);
@@ -28,7 +27,7 @@ export function LoginPage({ setUser }) {
       if (snapshot.exists()) {
         const role = snapshot.val().role;
 
-        setUser({ email: user.email,role });
+        setUser({ email: user.email, role });
 
         alert(`Logged in as: ${user.email} with role: ${role}`);
         navigate("/");
@@ -40,26 +39,25 @@ export function LoginPage({ setUser }) {
     }
   }
 
-  // Register function for regular users
   async function registerUser() {
     try {
-      const userCred = await createUserWithEmailAndPassword(auth, email, password);
+      const userCred = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
       const user = userCred.user;
 
-      // Define user data with empty wishlist array
       const userData = {
         email: user.email,
         role: "user",
-        wishlist: []  // Initial empty string array for wishlist
+        wishlist: [],
       };
 
-      // Log to see what data is being sent to Firebase
       console.log("Setting data for user:", userData);
 
-      // Save data to Firebase
       await set(ref(dbRealTime, `users/${user.uid}`), userData);
 
-      // Log success
       console.log("Data saved to Firebase for user:", user.uid);
 
       alert("User created: " + user.email + " with role: user");
@@ -68,26 +66,25 @@ export function LoginPage({ setUser }) {
     }
   }
 
-  // Register function for admins
   async function registerAdmin() {
     try {
-      const userCred = await createUserWithEmailAndPassword(auth, email, password);
+      const userCred = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
       const user = userCred.user;
 
-      // Define admin data with empty wishlist array
       const adminData = {
         email: user.email,
         role: "admin",
-        wishlist: []  // Initial empty string array for wishlist
+        wishlist: [],
       };
 
-      // Log to see what data is being sent to Firebase
       console.log("Setting data for admin:", adminData);
 
-      // Save data to Firebase
       await set(ref(dbRealTime, `users/${user.uid}`), adminData);
 
-      // Log success
       console.log("Data saved to Firebase for admin:", user.uid);
 
       alert("Admin user created: " + user.email + " with role: admin");
@@ -96,20 +93,15 @@ export function LoginPage({ setUser }) {
     }
   }
 
-  // Function to update the wishlist for a user
   async function updateWishlist(userId, newItem) {
     const wishlistRef = ref(dbRealTime, `users/${userId}/wishlist`);
 
-    // Fetch the current wishlist
     const currentWishlistSnapshot = await get(wishlistRef);
     if (currentWishlistSnapshot.exists()) {
-      // Get current wishlist array
       const currentWishlist = currentWishlistSnapshot.val();
 
-      // Add the new item (ensure it's a string)
       const updatedWishlist = [...currentWishlist, newItem];
 
-      // Update the wishlist in Firebase
       await set(wishlistRef, updatedWishlist);
 
       console.log("Wishlist updated:", updatedWishlist);
@@ -124,18 +116,22 @@ export function LoginPage({ setUser }) {
       <div className="Login">
         <h2>Login</h2>
         <input
+          className="LoginUsername"
           type="text"
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
         <input
+          className="LoginPassword"
           type="password"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button onClick={loginUser}>Login</button>
+        <button onClick={loginUser} className="loginbutton">
+          Login
+        </button>
       </div>
       <div className="Register">
         <h2>Register</h2>
@@ -151,8 +147,12 @@ export function LoginPage({ setUser }) {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button onClick={registerUser}>Register as User</button>
-        <button onClick={registerAdmin}>Register as Admin</button>
+        <button onClick={registerUser} className="registerbutton">
+          Register as User
+        </button>
+        <button onClick={registerAdmin} className="registerbutton">
+          Register as Admin
+        </button>
       </div>
     </div>
   );

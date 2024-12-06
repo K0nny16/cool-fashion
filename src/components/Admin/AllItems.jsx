@@ -1,33 +1,12 @@
-import { items } from "../../items.js";
-import React, { useState } from "react";
-import { ProductsProvider } from "../productprovider.jsx";
+import React from "react";
+import { useProducts } from "../productprovider.jsx";
 
 export function AllItems() {
-  const flattenItems = (items) => {
-    const result = [];
-    items.forEach((itemGroup) => {
-      Object.entries(itemGroup).forEach(([category, subCategory]) => {
-        Object.entries(subCategory).forEach(([subCategory, products]) => {
-          products.forEach((product) => {
-            result.push({
-              id: product.id,
-              img: product.img,
-              title: product.name,
-              price: product.pris,
-              buttonText: "Köp",
-            });
-          });
-        });
-      });
-    });
-    return result;
-  };
+  const { products } = useProducts(); 
 
-  const [allItems, setAllItems] = useState(flattenItems(items));
-
-  const cards = flattenItems(items);
-  if (cards.length === 0) return <p>Inga produkter hittades!</p>;
-  console.log("Flattend items: ", cards);
+  if (products.length === 0) {
+    return <p>Inga produkter hittades!</p>; 
+  }
 
   return (
     <div className="content">
@@ -41,23 +20,16 @@ export function AllItems() {
       >
         Alla Produkter
       </h2>
-      <button className="add-item">Lägg till en ny produkt</button>
       <div className="content-cards">
-        {cards.map((card) => (
-          <div key={card.id} className="content-card">
+        {products.map((product) => (
+          <div key={product.id} className="content-card">
             <img
-              src={card.img}
-              alt={card.title}
+              src={product.images?.[0] || "https://via.placeholder.com/150"}
+              alt={product.productName}
               className="content-card-image"
             />
-            <h3 className="content-card-title">{card.title}</h3>
-            <p className="content-card-price">{card.price} SEK</p>
-            <button
-              className="content-card-button"
-              onClick={() => alert(`${card.title} Köpt!`)}
-            >
-              Köp
-            </button>
+            <h3 className="content-card-title">{product.productName}</h3>
+            <p className="content-card-price">{`${product.price} SEK`}</p>
           </div>
         ))}
       </div>
