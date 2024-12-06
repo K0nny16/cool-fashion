@@ -28,7 +28,6 @@ export function FemaleClothes() {
                 src={femaleShoesMp4}
                 alt="Female shoes Video"
                 autoPlay
-                loop
                 muted
                 playsInline
             />

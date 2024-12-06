@@ -29,7 +29,6 @@ export function Accessories() {
           className="video"
           alt="Male Accessories Video"
           autoPlay
-          loop
           muted
           playsInline
         />
